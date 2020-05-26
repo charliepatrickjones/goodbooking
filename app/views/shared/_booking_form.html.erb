@@ -1,0 +1,9 @@
+<div class="container">
+  <%= simple_form_for [@restaurant, @booking] do |f| %>
+    <%= f.input :date , as: :date, html5: true %>
+    <%= f.input :time, as: :time, html5: true %>
+    <%= f.input :party, as: :select, collection: 1..10 %>
+    <%= f.submit 'Request' %>
+  <% end %>
+</div>
+

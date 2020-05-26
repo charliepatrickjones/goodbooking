@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def edit
@@ -17,10 +18,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.acceped = false # set default value
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @booking.restaurant = @restaurant
+    @booking.user = current_user
+    @booking.accepted = false # set default value
 
     if @booking.save
-      redirect_to @booking
+      redirect_to @restaurant
     else
       render 'new'
     end
