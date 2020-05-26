@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update :destroy]
-  before_action :check_role, only: [:new, :create, :edit, :update :destroy]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :check_role, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @restaurants = Restaurant.all
