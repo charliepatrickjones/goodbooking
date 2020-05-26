@@ -5,22 +5,22 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
 
-    # @restaurants = restaurant.all
-    # if params[:category].present?
-    #   @restaurants = @restaurants.where(category: params[:category])
-    # end
-    # if params[:address].present?
-    #   @restaurants = @restaurants.near(params[:address], 20)
-    # end
-    # @markers = @restaurants.geocoded.map do |restaurant|
-    #   {
-    #     lat: restaurant.latitude,
-    #     lng: restaurant.longitude,
-    #     infoWindow: render_to_string(partial: "info_window", locals: { restaurant: restaurant })
-    #     # image_url: helpers.asset_url('/app/assets/images/bf-logo.png')
+    @restaurants = Restaurant.all
+    if params[:category].present?
+      @restaurants = @restaurants.where(category: params[:category])
+    end
+    if params[:address].present?
+      @restaurants = @restaurants.near(params[:address], 20)
+    end
+    @markers = @restaurants.geocoded.map do |restaurant|
+      {
+        lat: restaurant.latitude,
+        lng: restaurant.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { restaurant: restaurant })
+        # image_url: helpers.asset_url('/app/assets/images/bf-logo.png')
 
-    #   }
-    # end
+      }
+    end
   end
 
   def show
@@ -64,7 +64,7 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :category, :address, :rating, :phone_number, :capacity, :menu, :description, :price_range)
+    params.require(:restaurant).permit(:name, :category, :address, :rating, :phone_number, :capacity, :menu, :description, :price_range, :photo)
   end
 
   def check_role

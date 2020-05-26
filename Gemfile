@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.6.6'
 
+
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'jbuilder', '~> 2.0'
@@ -15,6 +16,7 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'geocoder'
 
 
 group :development do
@@ -28,4 +30,6 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+  gem 'cloudinary', '~> 1.12.0'
+
 end
