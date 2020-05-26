@@ -1,9 +1,28 @@
 <div class="container">
-  <div class="card-product">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <div class="card-product-infos">
-      <h2>Product name</h2>
-      <p>Product description with <strong>relevant info</strong> only.</p>
+  <div class="d-flex align-items-start">
+    <div class="cards p-3">
+      <% @restaurants.each do |restaurant| %>
+        <%= link_to restaurant_path(restaurant) do %>
+          <div class="card-product mb-3 p-3">
+            <% if restaurant.photo.attached? %>
+              <%= cl_image_tag restaurant.photo.key %>
+            <% else %>
+              <img class="rounded" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <% end %>
+            <div class="card-product-infos">
+              <h2><%=restaurant.category%></h2>
+              <p><strong><%= restaurant.name %></strong> - <%= restaurant.address %></p>
+            </div>
+          </div>
+            <p>
+
+            </p>
+        <% end %>
+      <% end %>
     </div>
+ <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
 </div>
