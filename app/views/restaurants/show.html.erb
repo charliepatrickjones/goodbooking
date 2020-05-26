@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="card-restaurant">
+    <img src="https://cdn-b.william-reed.com/var/wrbm_gb_hospitality/storage/images/publications/hospitality/bighospitality.co.uk/article/2020/03/18/major-restaurant-groups-close-in-wake-of-coronavirus-crisis/3308224-1-eng-GB/Major-restaurant-groups-close-in-wake-of-Coronavirus-crisis_wrbm_large.png" />
+    <div class="card-restaurant-infos d-flex justify-content-between">
+      <div>
+        <h2><%= @restaurant.name %></h2>
+        <h3><%= @restaurant.category %></h3>
+      </div>
+      <div>
+        <h2 class="card-restaurant-rating text-center"><%= "🌟" * @restaurant.rating %></h2>
+        <h3 class="card-restaurant-rating-label text-center">Top Rated!</h3>
+      </div>
+      <div>
+        <h2 class="card-restaurant-pricing text-right"><%= '£' * @restaurant.price_range  %></h2>
+      </div>
+      <!-- Will show owners photo -->
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-restaurant-user avatar-bordered" />
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <%= render 'shared/tabpanel' %>
+</div>
+
