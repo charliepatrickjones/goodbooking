@@ -1,11 +1,16 @@
-<div class="banner">
-  <div class="banner-content">
+<div class="bannerpic d-flex" >
+  <div class="w-50">
+    <div class="banner-content">
     <h1>Be the best to book the best</h1>
     <p>Make reservations at your favourite restaurants</p>
   <%= render "shared/searchbar" %>
-</div>
+  </div>
 </div>
 
+<div class="banner w-50" >
+
+</div>
+</div>
 <h2 id="centering-title">The latest restaurants</h2>
   <div class="flex-container">
     <% @restaurants.each do |restaurant| %>
