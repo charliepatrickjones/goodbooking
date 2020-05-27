@@ -1,0 +1,16 @@
+<% rating_int = @restaurant.rating.floor %>
+<% rating_dec = @restaurant.rating - rating_int %>
+
+<h2 class="card-restaurant-rating text-center">
+  <% if rating_dec >= 0.75 %>
+    <%= content_tag(:i, nil, class: "fas fa-star") * (rating_int + 1) %>
+  <% elsif rating_dec >= 0.25 %>
+    <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+    <%= content_tag(:i, nil, class: "fas fa-star-half-alt") * rating_int %>
+  <% else %>
+    <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+  <% end %>
+</h2>
+<h3 class="text-center mt-2">
+  Top Rated!
+</h3>
