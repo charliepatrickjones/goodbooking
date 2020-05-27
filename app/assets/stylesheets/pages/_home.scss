@@ -1,4 +1,7 @@
 // Specific CSS for your home-page
+body {
+  background-color: white;
+}
 .flex-container {
   display: flex;
   justify-content: space-between;
@@ -6,6 +9,7 @@
   background:white;
   padding-left: 50px;
   padding-right: 50px;
+  padding-bottom: 50px;
 }
 .card-trip {
   overflow: hidden;
@@ -48,4 +52,18 @@
   margin: 0px;
   color: #34558B
 }
+.wrapper {
+    position: relative;
+    padding-bottom: 90px;
+    width: 100vw;
+    max-width: 1440px;
+    overflow: hidden;
+    padding-left: 119px;
+    background: white;
+    padding-left: 5px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
 
+}
