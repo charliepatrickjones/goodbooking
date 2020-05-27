@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+        <h1>Edit your restaurant</h1>
+          <%= simple_form_for @restaurant do |f| %>
+          <%= f.input :name, label: 'Restaurant Name', error: 'Restaurant Name is mandatory, please specify one' %>
+          <%= f.input :category, label: 'Category', error: 'Category is mandatory, please specify one' %>
+          <%= f.input :address, label: 'Address', error: 'Address is mandatory, please specify one' %>
+          <%= f.input :capacity, label: 'Capacity', error: 'Address is mandatory, please specify one' %>
+          <%= f.input :phone_number, label: 'Phone Number', error: 'Phone Number is mandatory, please specify one' %>
+          <%= f.input :description, error: 'Description is mandatory, please specify one' %>
+          <%= f.input :menu, label: 'attatch or contact GoodBooking admin' %>
+          <%= f.input :price_range, placeholder: '£££' %>
+          <%= f.input :photo, as: :file %>
+          <%= f.button :submit, class: "btn-btn-primary" %>
+          <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+        <% end %>
+      </div>
+    </div>
+</div>
