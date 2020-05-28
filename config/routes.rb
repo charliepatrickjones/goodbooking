@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
-  get '/users/:id/dashboard', to: 'users#dashboard'
+  get '/users/:id/dashboard', to: 'users#dashboard', as: 'dashboard'
   root to: 'pages#home'
   resources :restaurants do
     resources :reviews, only: [:show, :edit, :update, :new, :create]

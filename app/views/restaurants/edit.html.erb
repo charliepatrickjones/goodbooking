@@ -11,7 +11,7 @@
           <%= f.input :description, error: 'Description is mandatory, please specify one' %>
           <%= f.input :menu, label: 'attatch or contact GoodBooking admin' %>
           <%= f.input :price_range, placeholder: '£££' %>
-          <%= f.input :photo, as: :file %>
+          <%= f.input :photos, as: :file , input_html: { multiple: true } %>
           <%= f.button :submit, class: "btn-btn-primary" %>
           <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
         <% end %>

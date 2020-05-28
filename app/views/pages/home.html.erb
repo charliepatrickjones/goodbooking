@@ -15,8 +15,8 @@
     <% @restaurants.each do |restaurant| %>
       <%= link_to restaurant_path(restaurant) do %>
         <div class="card-trip">
-          <% if restaurant.photo.attached? %>
-            <%= cl_image_tag restaurant.photo.key %>
+          <% if restaurant.photos.attached? %>
+            <%= cl_image_tag restaurant.photos.first.key %>
           <% else %>
             <img class="rounded" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
           <% end %>
