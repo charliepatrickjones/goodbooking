@@ -23,12 +23,12 @@ class BookingsController < ApplicationController
     @remaining_slots = find_booking_slots
     set_bookings
     if @booking.party.nil? || @booking.time.nil?
-      render action: "new"
+      render "restaurants/show"
     elsif @booking.date < Date.today
       flash.now[:warning] = "you can't book in the past days"
-      render action: "new", warning: "you can't book in the past days"
+      render "restaurants/show", warning: "you can't book in the past days"
     elsif @booking.party > @remaining_slots[@booking.time]
-      redirect_to (@restaurant, warning: "you can't book more than available seats")
+      redirect_to @restaurant, warning: "you can't book more than available seats"
       # flash.now[:alert] = "you can't book more than available seats"
       # render 'restaurants/show'
     elsif @booking.save
