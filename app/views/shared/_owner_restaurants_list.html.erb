@@ -1,0 +1,18 @@
+<div class="row">
+  <% @restaurants.each do |restaurant|%>
+    <div class="card-trip mr-2 ml">
+      <% if restaurant.photos.attached? %>
+        <%= cl_image_tag restaurant.photos.first.key %>
+      <% else %>
+        <img class="rounded" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <% end %>
+      <div class="card-trip-infos">
+        <div>
+          <h2 class="mb-2"><%= link_to restaurant.name,  restaurant_bookings_path(restaurant)%></h2>
+          <p><strong><%= restaurant.category %></strong></p>
+          <p><%= restaurant.address %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
