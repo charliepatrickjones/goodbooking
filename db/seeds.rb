@@ -20,6 +20,8 @@
 
 
 require "open-uri"
+require 'faker'
+
 Review.destroy_all
 Booking.destroy_all
 Restaurant.destroy_all
@@ -27,17 +29,23 @@ User.destroy_all
 
 User.create(email: "guest@test.com", password: "123456", role: "guest")
 User.create(email: "owner@test.com", password: "123456", role: "owner")
-restaurant = Restaurant.new(category: 'Indian', user: User.first, name: 'Helen', opening_time: 'Lunch, Happy Hour, Dinner', address: "Gatehouse Ln, Goddards Green, Hassocks BN6 9LE", rating: 3, phone_number: '0208 12345678', capacity: 12, price_range: 45, description: "BEGIN YOUR DAY AT DISHOOM with breakfast, which might be a Bacon Naan Roll, a Kejriwal or a Big Bombay. Then lunch lightly on Roomali Rolls and Salad Plates, or linger with a feast. Refresh your afternoon with a drop of Chai and a small plate or two. Dine early or dine late. Or just join us for a tipple – perhaps an East India Gimlet, a Viceroy’s Old-fashioned, or our very good Dishoom IPA?", menu: "Bombay breakfast, lunch, afternoon chai, dinner and late tipples. Available for collection and delivery.")
-file = URI.open('https://d35cnulyv0pa6p.cloudfront.net/products/images/2017/23350/9264_evario_protega_2016_12_004.jpg')
-restaurant.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
-restaurant.save
-restaurant = Restaurant.new(category: 'Indian', user: User.first, name: 'Edith', opening_time: 'Lunch, Happy Hour, Dinner', address: "Butler's Green Rd, Ha names Heath RH16 4BE", rating: 3, phone_number: '0208 12345678', capacity: 12, price_range: 45, description: "BEGIN YOUR DAY AT DISHOOM with breakfast, which might be a Bacon Naan Roll, a Kejriwal or a Big Bombay. Then lunch lightly on Roomali Rolls and Salad Plates, or linger with a feast. Refresh your afternoon with a drop of Chai and a small plate or two. Dine early or dine late. Or just join us for a tipple – perhaps an East India Gimlet, a Viceroy’s Old-fashioned, or our very good Dishoom IPA?", menu: "Bombay breakfast, lunch, afternoon chai, dinner and late tipples. Available for collection and delivery.")
-file = URI.open('https://cdn8.dissolve.com/p/D145_296_102/D145_296_102_1200.jpg')
-restaurant.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
-restaurant.save
-Booking.create(date: Date.new(2020,6,1), time:'Lunch', accepted: false, party: 3, user: User.first, restaurant: Restaurant.first)
-Booking.create(date: Date.new(2020,6,2), time:'Lunch', accepted: false, party: 3, user: User.first, restaurant: Restaurant.first)
-Booking.create(date: Date.new(2020,6,3), time:'Lunch', accepted: false, party: 3, user: User.first, restaurant: Restaurant.first)
+5.times do
+  restaurant = Restaurant.new(category: ['Indian' 'Chinese', 'British', 'Arabic'].sample, user: User.first, name: Faker::Restaurant.name , opening_time: 'Lunch, Happy Hour, Dinner', address: "Gatehouse Ln, Goddards Green, Hassocks BN6 9LE", rating: 3, phone_number: '0208 12345678', capacity: 12, price_range: 45, description: "BEGIN YOUR DAY AT DISHOOM with breakfast, which might be a Bacon Naan Roll, a Kejriwal or a Big Bombay. Then lunch lightly on Roomali Rolls and Salad Plates, or linger with a feast. Refresh your afternoon with a drop of Chai and a small plate or two. Dine early or dine late. Or just join us for a tipple – perhaps an East India Gimlet, a Viceroy’s Old-fashioned, or our very good Dishoom IPA?", menu: "Bombay breakfast, lunch, afternoon chai, dinner and late tipples. Available for collection and delivery.")
+  file = URI.open('https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')
+  restaurant.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
+  restaurant.save
+  restaurant = Restaurant.new(category: ['Indian' 'Chinese', 'British', 'Arabic'].sample, user: User.first, name: Faker::Restaurant.name , opening_time: 'Lunch, Happy Hour, Dinner', address: "Butler's Green Rd, Ha names Heath RH16 4BE", rating: 3, phone_number: '0208 12345678', capacity: 12, price_range: 45, description: "BEGIN YOUR DAY AT DISHOOM with breakfast, which might be a Bacon Naan Roll, a Kejriwal or a Big Bombay. Then lunch lightly on Roomali Rolls and Salad Plates, or linger with a feast. Refresh your afternoon with a drop of Chai and a small plate or two. Dine early or dine late. Or just join us for a tipple – perhaps an East India Gimlet, a Viceroy’s Old-fashioned, or our very good Dishoom IPA?", menu: "Bombay breakfast, lunch, afternoon chai, dinner and late tipples. Available for collection and delivery.")
+  file = URI.open('https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80')
+  restaurant.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
+  restaurant.save
+end
+
+
+5.times do
+  Booking.create(date: Date.new(2020,6,1), time:'Lunch', accepted: false, party: 3, user: User.first, restaurant: Restaurant.first)
+  Booking.create(date: Date.new(2020,6,2), time:'Dinner', accepted: true, party: 3, user: User.first, restaurant: Restaurant.first)
+  Booking.create(date: Date.new(2020,6,3), time:'Lunch', accepted: false, party: 3, user: User.first, restaurant: Restaurant.last)
+end
 # restaurant = Restaurant.new(category: 'Italian', user: User.first, name: 'Barnsley', address: "Nevill Ave, Hove BN3 7HY", rating: 3, phone_number: '0208 12345678', capacity: 20, price_range: 45, description: "BEGIN YOUR DAY AT DISHOOM with breakfast, which might be a Bacon Naan Roll, a Kejriwal or a Big Bombay. Then lunch lightly on Roomali Rolls and Salad Plates, or linger with a feast. Refresh your afternoon with a drop of Chai and a small plate or two. Dine early or dine late. Or just join us for a tipple – perhaps an East India Gimlet, a Viceroy’s Old-fashioned, or our very good Dishoom IPA?", menu: "Bombay breakfast, lunch, afternoon chai, dinner and late tipples. Available for collection and delivery.")
 # file = URI.open('https://www.stiegelmeyer.com/fileadmin/_processed_/5/8/csm_9264_Evario_Intercontinental_45Grad_Model_2016_12_001_fein-01_44a3111076.jpg')
 # restaurant.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')

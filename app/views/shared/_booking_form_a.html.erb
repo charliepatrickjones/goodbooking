@@ -1,5 +1,5 @@
 <div class="container mt-3 mb-5">
-  <%= simple_form_for [@restaurant, @booking], remote: true do |f| %>
+  <%= simple_form_for [@restaurant, @booking] do |f| %>
     <%= f.input :date , as: :date, html5: true %>
     <%= f.submit 'Check Availablity' %>
   <% end %>
