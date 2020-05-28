@@ -1,3 +1,5 @@
+<%= render 'shared/alert' %>
+
 <div class="container mt-5">
   <div class="card-restaurant">
     <% if @restaurant.photo.attached? %>
@@ -29,10 +31,9 @@
 </div>
 
 <div class="container mt-4">
-  <% if @booking.date.nil?  %>
+  <% if @booking.date.nil? || @booking.date < Date.today %>
    <%= render 'shared/booking_form_a' %>
   <% else %>
     <%= render 'shared/booking_form_b' %>
   <% end %>
-
 </div>
