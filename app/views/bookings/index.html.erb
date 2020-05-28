@@ -6,7 +6,7 @@
     <div class="row">
       <%  @bookings.each do |booking| %>
         <% guest = booking.user %>
-        <% unless booking.accepted %>
+        <% if !booking.accepted && booking.date >= Date.today %>
           <div class="card-product m-2 col-4">
             <% if guest.photo.attached? %>
               <%= cl_image_tag guest.photo.key %>
@@ -28,7 +28,7 @@
     <div class="row">
       <% @bookings.each do |booking| %>
         <% guest = booking.user %>
-        <% if booking.accepted %>
+        <% if booking.accepted && booking.date >= Date.today %>
           <div class="card-product m-2 col-4">
             <% if guest.photo.attached? %>
               <%= cl_image_tag guest.photo.key %>
@@ -44,5 +44,28 @@
         <% end %>
       <% end %>
     </div>
+
+    <h2 class="m-5" >Past Guests</h2>
+    <div class="row">
+      <% @bookings.each do |booking| %>
+        <% guest = booking.user %>
+        <% if booking.accepted && booking.date < Date.today %>
+          <div class="card-product m-2 col-4">
+            <% if guest.photo.attached? %>
+              <%= cl_image_tag guest.photo.key %>
+            <% else %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
+            <% end %>
+            <div class="card-product-infos">
+              <h3><%= guest.name %></h3>
+              <h3><%= guest.rating  %></h3>
+              <h3><%= booking.time%>, <%= booking.date %></h3>
+              <button type="button" class="btn btn-primary p-1 mb-2 ml-4">Rate</button>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
   <% end %>
 </div>
