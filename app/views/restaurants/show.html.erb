@@ -29,5 +29,10 @@
 </div>
 
 <div class="container mt-4">
-  <%= render 'shared/booking_form' %>
+  <% if @booking.date.nil?  %>
+   <%= render 'shared/booking_form_a' %>
+  <% else %>
+    <%= render 'shared/booking_form_b' %>
+  <% end %>
+
 </div>
