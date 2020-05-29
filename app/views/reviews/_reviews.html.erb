@@ -1,8 +1,21 @@
-<% if !@restaurant.reviews.nil? %>
-  <% @restaurant.reviews.each do |review| %>
-    <p><%= review.booking_rating %><p>
-    <p><%= review.content %><p>
+<% @restaurant.reviews.each do |review| %>
+  <% if !review.booking_rating.nil?%>
+    <p class="m-0"><%= review.user.name %></p>
+    <p class="card-restaurant-rating m-0 ">
+      <% rating_int = review.booking_rating.floor %>
+      <% rating_dec = review.booking_rating - rating_int %>
+      <% if rating_dec >= 0.75 %>
+        <%= content_tag(:i, nil, class: "fas fa-star") * (rating_int + 1) %>
+      <% elsif rating_dec >= 0.25 %>
+        <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+        <%= content_tag(:i, nil, class: "fas fa-star-half-alt")%>
+      <% else %>
+        <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+      <% end %>
+    </p>
   <% end %>
+  <p class="m-0"><%= review.content %><p>
 <% end %>
+
 
 

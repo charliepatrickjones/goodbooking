@@ -33,13 +33,13 @@
 
 <% if current_user.role == 'guest' %>
   <div class="container mt-4">
-    <div class="d-inline">
-      <div class="w-75">
+    <div class="row">
+      <div class="col-sm-8">
         <%= render 'shared/tabpanel' %>
       </div>
-      <div class="w-25">
+      <div class="col-sm-4">
         <% if @booking.date.nil? || @booking.date < Date.today %>
-         <%= render 'shared/booking_form_a' %>
+          <%= render 'shared/booking_form_a' %>
         <% else %>
           <%= render 'shared/booking_form_b' %>
         <% end %>
