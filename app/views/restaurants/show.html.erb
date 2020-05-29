@@ -34,12 +34,7 @@
   <%= render 'shared/tabpanel' %>
 </div>
 
-<<<<<<< HEAD
-<div class="container">
-  <h2>Please Leave A Review<h2>
-</div>
-<%= render 'shared/review_form' %>
-=======
+
 <div class="container mt-4">
   <% if @booking.date.nil? || @booking.date < Date.today %>
    <%= render 'shared/booking_form_a' %>
@@ -47,4 +42,8 @@
     <%= render 'shared/booking_form_b' %>
   <% end %>
 </div>
->>>>>>> master
+
+<div>
+  <%= render "shared/restaurant_review" %>
+</div>
+

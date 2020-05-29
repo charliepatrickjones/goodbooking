@@ -5,9 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :bookings
   has_many :restaurants
-<<<<<<< HEAD
-  #has_many :reviews, through: :restaurants
-=======
+
   has_one_attached :photo
->>>>>>> master
 end
