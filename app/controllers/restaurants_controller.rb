@@ -18,7 +18,6 @@ class RestaurantsController < ApplicationController
         lng: restaurant.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { restaurant: restaurant })
         # image_url: helpers.asset_url('/app/assets/images/bf-logo.png')
-
       }
     end
   end
@@ -65,7 +64,7 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :category, :address, :rating, :phone_number, :capacity, :menu, :description, :price_range, :photo)
+    params.require(:restaurant).permit(:name, :category, :address, :rating, :phone_number, :capacity, :menu, :description, :price_range, photos: [])
   end
 
   def check_role

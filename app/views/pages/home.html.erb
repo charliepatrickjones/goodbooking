@@ -1,8 +1,68 @@
-<div class="banner">
-  <div class="banner-content">
+<div class="bannerpic d-flex" >
+  <div class="w-50">
+    <div class="banner-content">
     <h1>Be the best to book the best</h1>
     <p>Make reservations at your favourite restaurants</p>
   <%= render "shared/searchbar" %>
+  </div>
 </div>
-</div>
+<div class="banner w-50" >
 
+</div>
+</div>
+<h2 id="centering-title">The latest restaurants</h2>
+  <div class="flex-container">
+    <% @restaurants.each do |restaurant| %>
+      <%= link_to restaurant_path(restaurant) do %>
+        <div class="card-trip">
+          <% if restaurant.photos.attached? %>
+            <%= cl_image_tag restaurant.photos.first.key %>
+          <% else %>
+            <img class="rounded" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%=restaurant.name%></h2>
+              <p><strong><%= restaurant.category %></strong> - <%= restaurant.address %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+<div class="banner1">
+<h2>Join our thriving foodie community</h2>
+</div>
+<div class="wrapper">
+<div class="banner2">
+  <div class="card">
+    <h2>Restaurant owners</h2>
+    <p>Your tables are valuable and we want to help you fill them with the best customers. Get control of your bookings and see what your customers are really like</p>
+    <ul>
+      <li>Get the best customers</li>
+      <li>Get the best customers</li>
+      <li>Get the best customers</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>Restaurant goers</h2>
+    <ul>
+      <li>Get the best customers</li>
+      <li>Get the best customers</li>
+      <li>Get the best customers</li>
+    </ul>
+  </div>
+</div>
+</div>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  </div>
+</div>

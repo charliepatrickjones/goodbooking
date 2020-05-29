@@ -6,14 +6,25 @@
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("background.jpg");
   background-size: cover;
   color: white;
+  border-radius: 5px;
+  margin: 50px;
+  max-height: 450px;
+  max-width: 550px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 h1{
   font-size: 60px;
   font-weight: bold;
+  margin-top: 175px;
   margin-bottom: 20px;
-  margin-left: 14px;
+  margin-left: 30px;
+  color: #34558B;
 }
 p {
   font-size: 30px;
-  margin-left: 14px;
+  margin-left: 30px;
+  color: #34558B;
+  opacity: 0.5;
 }
+
+

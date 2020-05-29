@@ -12,7 +12,7 @@ const buildMap = () => {
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-    new mapboxgl.Marker()
+    new mapboxgl.Marker({color: "#34558B"})
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map);
   });

@@ -5,6 +5,11 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  border: 2px solid rgba(28,110,164,0.58);
+  border-radius: 4px;
+    &:hover {
+      border: 2px solid #EFBDEB;
+    }
 }
 
 .card-product img {
@@ -17,7 +22,15 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+
 }
+
+.card-product h3 {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
 
 .card-product p {
   font-size: 12px;
@@ -29,4 +42,24 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.cards {
+  height: 80vh;
+  overflow: auto;
+  p{
+    margin-left: 0px;
+    color: #34558B;
+    font-family: Rubik, sans-serif;
+  }
+  a{
+    color: #34558B;
+    font-family: Rubik, sans-serif;
+  }
+  &:hover {
+    a{
+    text-decoration: none;
+
+    }
+  }
 }
