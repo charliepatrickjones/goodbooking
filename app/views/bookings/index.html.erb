@@ -16,9 +16,21 @@
             <% end %>
             <div class="card-product-infos">
               <h3><%= guest.name %></h3>
-              <h3><%= guest.rating %></h3>
+              <% rating_int = guest.rating.floor %>
+              <% rating_dec = guest.rating - rating_int %>
+              <h3 class="card-restaurant-rating text-center">
+                <% if rating_dec >= 0.75 %>
+                  <%= content_tag(:i, nil, class: "fas fa-star") * (rating_int + 1) %>
+                <% elsif rating_dec >= 0.25 %>
+                  <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+                  <%= content_tag(:i, nil, class: "fas fa-star-half-alt")%>
+                <% else %>
+                  <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+                <% end %>
+              </h3>
               <h3><%= booking.time%>, <%= booking.date %></h3>
-              <%= link_to 'Accept', accept_path(restaurant, booking), class: "btn btn-primary mb-2 ml-4" %>
+              <h3><%= booking.party %> people</h3>
+              <%= link_to 'Accept', accept_path(restaurant, booking), class: "btn btn-primary btn-sm p-1 mb-2 ml-4" %>
             </div>
           </div>
         <% end %>
@@ -38,8 +50,20 @@
             <% end %>
             <div class="card-product-infos">
               <h3><%= guest.name %></h3>
-              <h3><%= guest.rating  %></h3>
+              <% rating_int = guest.rating.floor %>
+              <% rating_dec = guest.rating - rating_int %>
+              <h3 class="card-restaurant-rating text-center">
+                <% if rating_dec >= 0.75 %>
+                  <%= content_tag(:i, nil, class: "fas fa-star") * (rating_int + 1) %>
+                <% elsif rating_dec >= 0.25 %>
+                  <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+                  <%= content_tag(:i, nil, class: "fas fa-star-half-alt")%>
+                <% else %>
+                  <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+                <% end %>
+              </h3>
               <h3><%= booking.time%>, <%= booking.date %></h3>
+              <h3><%= booking.party %> people</h3>
             </div>
           </div>
         <% end %>
@@ -59,9 +83,20 @@
             <% end %>
             <div class="card-product-infos">
               <h3><%= guest.name %></h3>
-              <h3><%= guest.rating  %></h3>
+              <% rating_int = guest.rating.floor %>
+              <% rating_dec = guest.rating - rating_int %>
+              <h3 class="card-restaurant-rating text-center">
+                <% if rating_dec >= 0.75 %>
+                  <%= content_tag(:i, nil, class: "fas fa-star") * (rating_int + 1) %>
+                <% elsif rating_dec >= 0.25 %>
+                  <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+                  <%= content_tag(:i, nil, class: "fas fa-star-half-alt")%>
+                <% else %>
+                  <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+                <% end %>
+              </h3>
               <h3><%= booking.time%>, <%= booking.date %></h3>
-              <button type="button" class="btn btn-primary p-1 mb-2 ml-4">Rate</button>
+              <button type="button" class="btn btn-primary btn-sm p-1 mb-2 ml-4">Rate</button>
             </div>
           </div>
         <% end %>
