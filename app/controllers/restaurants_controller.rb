@@ -45,7 +45,7 @@ class RestaurantsController < ApplicationController
 
   def update
     if @restaurant.update(restaurant_params)
-      dashboard_path(current_user), alert: "LISTING UPDATED"
+      redirect_to dashboard_path(current_user), alert: "LISTING UPDATED"
     else
       render 'edit'
     end
