@@ -1,11 +1,20 @@
-<%= render 'shared/alert' %>
 <div class="container">
-  <div class="guest-profile border">
-    <h1 class="text-center h-100">Profile Area</h1>
+    <div class="guest-profile border align items start">
+      <div class="guest-info">
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key %>
+        <% else %>
+          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt=""> “https://kitt.lewagon.com/placeholder/users/ssaunier” %>
+        <% end %>
+        <h2><%= current_user.name %></h2>
+        <p><%= current_user.email %></p>
+        <p><strong>Your rating <%= current_user.rating %></strong></p>
+      </div>
   </div>
 </div>
 <div class="container mt-5">
 
 <%= render 'shared/guest_bookings_list' %>
 </div>
+
 

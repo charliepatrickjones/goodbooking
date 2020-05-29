@@ -12,10 +12,6 @@ class BookingsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
-  def edit
-    @booking = Booking.find(params[:id])
-  end
-
   def create
     @booking = Booking.new(booking_params)
     @restaurant = Restaurant.find(params[:restaurant_id])
@@ -25,19 +21,30 @@ class BookingsController < ApplicationController
     if @booking.party.nil? || @booking.time.nil?
       render "restaurants/show"
     elsif @booking.date < Date.today
-      flash.now[:warning] = "you can't book in the past days"
-      render "restaurants/show", warning: "you can't book in the past days"
+      render "restaurants/show"
     elsif @booking.party > @remaining_slots[@booking.time]
       redirect_to @restaurant, warning: "you can't book more than available seats"
       # flash.now[:alert] = "you can't book more than available seats"
       # render 'restaurants/show'
     elsif @booking.save
-      redirect_to bookings_path, success: 'your request has been sent!'
+      redirect_to user_path(current_user), success: 'your request has been sent!'
       ## will update to redircet to user profile page
     else
       redirect_to @restaurant, warning: "Invalid data. Try it again."
     end
+  end
 
+  def accept
+    @booking = Booking.find(params[:id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @booking.accepted = true
+    @booking.save
+
+    redirect_to  restaurant_bookings_path(@restaurant)
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
   end
 
   def update
