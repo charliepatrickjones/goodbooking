@@ -10,11 +10,13 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.new
   end
 
   def create
     @booking = Booking.new(booking_params)
     @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.new
 
     @remaining_slots = find_booking_slots
     set_bookings

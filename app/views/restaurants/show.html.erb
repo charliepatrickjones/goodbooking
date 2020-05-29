@@ -30,18 +30,14 @@
   </div>
 </div>
 
-<div>
-  <%= render "shared/restaurant_review" %>
-</div>
 
 <% if current_user.role == 'guest' %>
-  <div class="container">
-    <div class="row mt-4">
-      <div class="col-8">
+  <div class="container mt-4">
+    <div class="d-inline">
+      <div class="w-75">
         <%= render 'shared/tabpanel' %>
       </div>
-
-      <div class="col-4">
+      <div class="w-25">
         <% if @booking.date.nil? || @booking.date < Date.today %>
          <%= render 'shared/booking_form_a' %>
         <% else %>
@@ -50,7 +46,6 @@
       </div>
     </div>
   </div>
-
 <% else %>
   <div class="container mt-4">
     <%= render 'shared/tabpanel' %>
