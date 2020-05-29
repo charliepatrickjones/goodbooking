@@ -2,7 +2,7 @@
     <div class="guest-profile border align items start">
       <div class="guest-info">
         <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key %>
+          <%= cl_image_tag current_user.photo.key, class:"w-25" %>
         <% else %>
           <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt=""> “https://kitt.lewagon.com/placeholder/users/ssaunier” %>
         <% end %>
