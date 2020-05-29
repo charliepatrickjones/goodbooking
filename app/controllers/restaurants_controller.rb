@@ -26,8 +26,6 @@ class RestaurantsController < ApplicationController
   def show
     @booking = Booking.new
     @review = Review.new
-
-    
   end
 
   def new
@@ -67,7 +65,7 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :category, :address, :rating, :phone_number, :capacity, :menu, :description, :price_range, :photo)
+    params.require(:restaurant).permit(:name, :category, :address, :rating, :phone_number, :capacity, :menu, :description, :price_range, photos: [])
   end
 
   def check_role

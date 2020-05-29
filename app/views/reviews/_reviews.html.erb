@@ -1,0 +1,8 @@
+<% if !@restaurant.reviews.nil? %>
+  <% @restaurant.reviews.each do |review| %>
+    <p><%= review.booking_rating %><p>
+    <p><%= review.content %><p>
+  <% end %>
+<% end %>
+
+
