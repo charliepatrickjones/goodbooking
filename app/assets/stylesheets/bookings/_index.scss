@@ -1,29 +1,15 @@
-.row{
-  min-height: 200px;
-  align-items: stretch;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-.card-trip {
-  /*float: left;*/
-  height: 300px;
-  width: 200px;
-  margin-bottom: 2rem;
-  border: 0;
-  flex-basis: 33.333%;
-  flex-grow: 0;
-  flex-shrink: 0;
+h2 {
+  text-align: center;
 }
 
-.card-trip > img {
-  margin: 0 auto;
-  object-fit: cover;
-  width:100%;
+img {
+  border: 1px solid #D7DBDD;
 }
 
-.card-trip-infos {
-  font-size: 85%;
+.card-product {
+  button {
+    font-size: 12px;
+    height: 15%;
+    width: 60%;
+  }
 }
