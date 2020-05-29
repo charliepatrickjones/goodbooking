@@ -11,6 +11,8 @@
           <h2 class="mb-2"><%= link_to restaurant.name,  restaurant_bookings_path(restaurant)%></h2>
           <p><strong><%= restaurant.category %></strong></p>
           <p><%= restaurant.address %></p>
+          <%= link_to "Edit", edit_restaurant_path(restaurant) %>
+          <%= link_to "Delete", restaurant_path(restaurant), method: :delete %>
         </div>
       </div>
     </div>
