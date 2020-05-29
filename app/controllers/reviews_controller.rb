@@ -1,27 +1,29 @@
 class ReviewsController < ApplicationController
     def index
-        @review = Review.all
+        @reviews = Review.all
     end
 
     def show
+        @review = Review.find(params[:id])
     end
 
-    def create
+    
+    def new 
         @restaurant = Restaurant.find(params[:restaurant_id])
+        @review = Review.new
+    end
+    
+    def create
         @review = Review.new(review_params)
-
-        @review.restaurant = restaurant
+        @restaurant = Restaurant.find(params[:restaurant_id]) 
+        @review.restaurant = @restaurant
+        @review.user = current_user
         if @review.save
-            redirect_to @review
+            redirect_to restaurant_path(@restaurant)
         else
-            render 'new'
+           redirect_to restaurant_path(@restaurant)
         end
 
-    end
-
-    def new 
-        @restaurant = Restaurant.find(params[:id])
-        @review = Review.new
     end
 
     def edit
@@ -32,7 +34,7 @@ class ReviewsController < ApplicationController
         @review = Review.find(params[:id])
         
         if review.update(review_params)
-            redirect_to @review
+            redirect_to @restaurant
         else
             render 'edit'
         end
@@ -47,8 +49,10 @@ class ReviewsController < ApplicationController
 
     private
 
+    
     def review_params
-        params.require(review).permit(:content, :rating)
-
+        params.require(:review).permit(:content, :booking_rating)
+    end
+    
     
 end
