@@ -1,8 +1,18 @@
 <div class="container">
-  <div class="main-board border">
-    <h1 class="text-center h-100">Main Board</h1>
+    <div class="guest-profile border align items start">
+      <div class="guest-info">
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key %>
+        <% else %>
+          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt=""> “https://kitt.lewagon.com/placeholder/users/ssaunier” %>
+        <% end %>
+        <h2><%= current_user.name %></h2>
+        <p><%= current_user.email %></p>
+        <p><strong>Your restaurant rating is <%= current_user.rating %></strong></p>
+      </div>
   </div>
 </div>
+
 
 <div class="container mt-5">
   <h2 class="text-center mb-4">Listed Restaurants</h2>
