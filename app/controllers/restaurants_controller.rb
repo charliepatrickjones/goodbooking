@@ -4,8 +4,6 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
-
-    @restaurants = Restaurant.all
     if params[:category].present?
       @restaurants = @restaurants.where(category: params[:category])
     end
@@ -36,7 +34,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user = current_user
     if @restaurant.save
-      redirect_to restaurants_path, alert: "LISTING CREATED"
+      redirect_to dashboard_path(current_user), alert: "LISTING CREATED"
     else
       render :new
     end
@@ -47,7 +45,7 @@ class RestaurantsController < ApplicationController
 
   def update
     if @restaurant.update(restaurant_params)
-      redirect_to @restaurant
+      redirect_to dashboard_path(current_user), alert: "LISTING UPDATED"
     else
       render 'edit'
     end
@@ -55,7 +53,7 @@ class RestaurantsController < ApplicationController
 
   def destroy
     @restaurant.destroy
-    redirect_to restaurants_path
+    redirect_to dashboard_path(current_user), alert: "LISTING DELETED"
   end
 
   private

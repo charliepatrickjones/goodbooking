@@ -13,7 +13,7 @@
           <%= f.input :price_range, placeholder: '£££' %>
           <%= f.input :photos, as: :file , input_html: { multiple: true } %>
           <%= f.button :submit, class: "btn-btn-primary" %>
-          <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+          <%= link_to "cancel", dashboard_path(current_user)  %>
         <% end %>
       </div>
     </div>
