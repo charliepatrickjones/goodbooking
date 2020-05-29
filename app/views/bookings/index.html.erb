@@ -6,6 +6,7 @@
     <div class="row">
       <%  @bookings.each do |booking| %>
         <% guest = booking.user %>
+        <% restaurant = booking.restaurant %>
         <% if !booking.accepted && booking.date >= Date.today %>
           <div class="card-product m-2 col-4">
             <% if guest.photo.attached? %>
@@ -17,7 +18,7 @@
               <h3><%= guest.name %></h3>
               <h3><%= guest.rating %></h3>
               <h3><%= booking.time%>, <%= booking.date %></h3>
-              <button type="button" class="btn btn-primary mb-2 ml-4">Accept</button>
+              <%= link_to 'Accept', accept_path(restaurant, booking), class: "btn btn-primary mb-2 ml-4" %>
             </div>
           </div>
         <% end %>
