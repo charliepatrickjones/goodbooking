@@ -22,3 +22,9 @@
 .form-inline {
   padding-left: 30px;
 }
+
+#search-form.container {
+  flex: 0 0 400px;
+  position: sticky;
+  top: 0;
+}
