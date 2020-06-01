@@ -97,11 +97,12 @@
               </h3>
               <h3><%= booking.time%>, <%= booking.date %></h3>
               <button type="button" class="btn btn-primary btn-sm p-1 mb-2 ml-4">Rate</button>
+              <%= render 'shared/review_form', booking: booking, review: Review.new  %>
             </div>
           </div>
         <% end %>
+        <%#= render 'shared/review_form', booking: booking, review: Review.new  %>
       <% end %>
     </div>
-
   <% end %>
 </div>
