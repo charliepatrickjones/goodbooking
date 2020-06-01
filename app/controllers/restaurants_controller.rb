@@ -18,7 +18,6 @@ class RestaurantsController < ApplicationController
         lng: restaurant.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { restaurant: restaurant })
         # image_url: helpers.asset_url('/app/assets/images/bf-logo.png')
-
       }
     end
   end
