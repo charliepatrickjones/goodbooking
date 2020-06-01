@@ -1,0 +1,40 @@
+.card-trip.owner-list {
+  /*float: left;*/
+  height: 320px;
+  width: 200px;
+  margin-bottom: 2rem;
+  border: 0;
+  flex-basis: 30%;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  img {
+    height: 60%;
+    margin: 0 auto;
+    object-fit: cover;
+    width:100%;
+  }
+  h2 {
+    font-size: 16px;
+  }
+
+  h3 {
+    font-size: 12px;
+    color: #34558B;
+  }
+  p {
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 768px){
+  .card-trip.owner-list {
+    h2 {
+      font-size: 12px;
+    }
+    p {
+      font-size: 8px;
+    }
+  }
+}
