@@ -16,7 +16,7 @@
 </div> -->
 <div class="container justify-content-center">
   <h3>Top rated</h3>
-  <div class="row rest-carousel">
+  <div class="row rest-carousel card-restaurant">
     <% @restaurants.each do |restaurant|%>
       <div class="card-trip mr-2 ml">
         <% if restaurant.photos.attached? %>
@@ -24,7 +24,7 @@
         <% else %>
           <img class="rounded" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <% end %>
-        <div class="card-trip-infos">
+        <div class="card-restaurant-infos">
           <div>
             <h2 class="mb-2"><%= link_to restaurant.name,  restaurant_bookings_path(restaurant)%></h2>
             <p><strong><%= restaurant.category %></strong></p>
