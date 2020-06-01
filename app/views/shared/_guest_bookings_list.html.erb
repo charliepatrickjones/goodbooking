@@ -1,6 +1,6 @@
 <div class="accepeted">
   <h2 class="text-center mb-4"> Accepted Bookings</h2>
-  <div class="row">
+  <div class="row rest-card">
     <% @bookings.each do |booking|%>
     <% restaurant = booking.restaurant %>
       <% if booking.accepted && booking.date >= Date.today %>
@@ -25,7 +25,7 @@
 </div>
 <div class="not-confirmed-yet">
   <h2 class="text-center mb-4"> Waiting for Confirmation</h2>
-  <div class="row">
+  <div class="row rest-card">
     <% @bookings.each do |booking|%>
     <% restaurant = booking.restaurant %>
       <% if !booking.accepted && booking.date >= Date.today %>
@@ -50,7 +50,7 @@
 </div>
 <div class="your-history">
   <h2 class="text-center mb-4">Your History</h2>
-  <div class="row">
+  <div class="row rest-card">
     <% @bookings.each do |booking|%>
     <% restaurant = booking.restaurant %>
       <% if booking.accepted && booking.date < Date.today %>

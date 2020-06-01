@@ -2,6 +2,9 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+import 'slick-carousel';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
@@ -14,3 +17,8 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
 });
 
+$('.rest-carousel').slick({
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 3
+});
