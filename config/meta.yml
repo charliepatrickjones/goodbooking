@@ -1,0 +1,5 @@
+meta_product_name: "Good Booking"
+meta_title: "Good Booking - No more no shows"
+meta_description: "Eliminating no shows in the restaurant industry"
+meta_image: "background.jpg" # should exist in `app/assets/images/`
+
