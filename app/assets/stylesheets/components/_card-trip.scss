@@ -1,4 +1,4 @@
-.card-trip.owner-list {
+.card-trip {
   /*float: left;*/
   height: 320px;
   width: 200px;
@@ -29,7 +29,7 @@
 }
 
 @media (max-width: 768px){
-  .card-trip.owner-list {
+  .card-trip {
     h2 {
       font-size: 12px;
     }
