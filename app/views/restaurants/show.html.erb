@@ -31,23 +31,26 @@
 </div>
 
 
-<% if current_user.role == 'guest' %>
-  <div class="container mt-4">
-    <div class="row">
-      <div class="col-sm-8">
-        <%= render 'shared/tabpanel' %>
-      </div>
-      <div class="col-sm-4">
-        <% if @booking.date.nil? || @booking.date < Date.today %>
-          <%= render 'shared/booking_form_a' %>
-        <% else %>
-          <%= render 'shared/booking_form_b' %>
-        <% end %>
+
+<% unless current_user.nil? || %>
+  <% if current_user.role == 'guest' %>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-sm-8">
+          <%= render 'shared/tabpanel' %>
+        </div>
+        <div class="col-sm-4">
+          <% if @booking.date.nil? || @booking.date < Date.today %>
+            <%= render 'shared/booking_form_a' %>
+          <% else %>
+            <%= render 'shared/booking_form_b' %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-<% else %>
-  <div class="container mt-4">
-    <%= render 'shared/tabpanel' %>
-  </div>
+  <% else %>
+    <div class="container mt-4">
+      <%= render 'shared/tabpanel' %>
+    </div>
+  <% end %>
 <% end %>
