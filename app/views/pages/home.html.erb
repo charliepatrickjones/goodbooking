@@ -1,68 +1,66 @@
-<div class="bannerpic d-flex" >
-  <div class="w-50">
-    <div class="banner-content">
-    <h1>Be the best to book the best</h1>
-    <p>Make reservations at your favourite restaurants</p>
-  <%= render "shared/searchbar" %>
+<div class="banner">
+  <div>
+    <h1 class="text-center">Find a reservation</h1>
+    <div class="row-12 justify-content-center">
+      <%= render "shared/searchbar" %>
+    </div>
   </div>
 </div>
-<div class="banner w-50" >
-
-</div>
-</div>
-<h2 id="centering-title">The latest restaurants</h2>
-  <div class="flex-container">
-    <% @restaurants.each do |restaurant| %>
-      <%= link_to restaurant_path(restaurant) do %>
-        <div class="card-trip">
-          <% if restaurant.photos.attached? %>
-            <%= cl_image_tag restaurant.photos.first.key %>
-          <% else %>
-            <img class="rounded" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <% end %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%=restaurant.name%></h2>
-              <p><strong><%= restaurant.category %></strong> - <%= restaurant.address %></p>
-            </div>
+<!-- <div class="rest-carousel">
+  <div>your content</div>
+  <div>your content</div>
+  <div>your content</div>
+  <div>your content</div>
+  <div>your content</div>
+  <div>your content</div>
+</div> -->
+<div class="container justify-content-center">
+  <h3>Top rated</h3>
+  <div class="row rest-carousel">
+    <% @restaurants.each do |restaurant|%>
+      <div class="card-trip mr-2 ml">
+        <% if restaurant.photos.attached? %>
+          <%= cl_image_tag restaurant.photos.first.key %>
+        <% else %>
+          <img class="rounded" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2 class="mb-2"><%= link_to restaurant.name,  restaurant_bookings_path(restaurant)%></h2>
+            <p><strong><%= restaurant.category %></strong></p>
+            <p><%= restaurant.address %></p>
+            <%= link_to "Edit", edit_restaurant_path(restaurant) %>
+            <%= link_to "Delete", restaurant_path(restaurant), method: :delete %>
           </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
-</div>
-<div class="banner1">
-<h2>Join our thriving foodie community</h2>
-</div>
-<div class="wrapper">
-<div class="banner2">
-  <div class="card">
-    <h2>Restaurant owners</h2>
-    <p>Your tables are valuable and we want to help you fill them with the best customers. Get control of your bookings and see what your customers are really like</p>
-    <ul>
-      <li>Get the best customers</li>
-      <li>Get the best customers</li>
-      <li>Get the best customers</li>
-    </ul>
   </div>
-  <div class="card">
-    <h2>Restaurant goers</h2>
-    <ul>
-      <li>Get the best customers</li>
-      <li>Get the best customers</li>
-      <li>Get the best customers</li>
-    </ul>
-  </div>
-</div>
-</div>
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  <div class="row justify-content-center">
+    <h3>Why Good Booking?</h3>
+    <div class="d-flex">
+      <div class="col-6">
+        <div><p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit repudiandae atque consectetur velit provident mollitia. Corporis nesciunt asperiores sunt ducimus dolor accusamus vel maxime, rerum, reprehenderit eius in atque pariatur?</p>
+        </div>
+      </div>
+       <div class="col-6">
+        <div><p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit repudiandae atque consectetur velit provident mollitia. Corporis nesciunt asperiores sunt ducimus dolor accusamus vel maxime, rerum, reprehenderit eius in atque pariatur?</p>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="col-6">
+        <div><p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit repudiandae atque consectetur velit provident mollitia. Corporis nesciunt asperiores sunt ducimus dolor accusamus vel maxime, rerum, reprehenderit eius in atque pariatur?</p>
+        </div>
+      </div>
+       <div class="col-6">
+        <div><p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit repudiandae atque consectetur velit provident mollitia. Corporis nesciunt asperiores sunt ducimus dolor accusamus vel maxime, rerum, reprehenderit eius in atque pariatur?</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
+
+
+

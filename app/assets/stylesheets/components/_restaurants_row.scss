@@ -1,11 +1,11 @@
-.row{
+.rest-card{
   min-height: 200px;
   align-items: stretch;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: overflow-x;
 }
 .card-trip {
   /*float: left;*/
