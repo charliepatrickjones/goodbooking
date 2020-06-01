@@ -8,36 +8,38 @@
   align-items: center;
   border: 2px solid rgba(28,110,164,0.58);
   border-radius: 4px;
-    &:hover {
-      border: 2px solid #EFBDEB;
-    }
+  &:hover {
+    border: 2px solid #EFBDEB;
+  }
   text-align:center;
+
+  .card-product-infos {
+    margin: 0 auto;
+  }
+
+  img {
+    height: 100%;
+    width: 120px;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: 14px;
+    // font-weight: bold;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 12px;
+    // font-weight: bold;
+    margin-top: 8px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
 }
-
-.booking-card img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.booking-card h2 {
-  font-size: 14px;
-  // font-weight: bold;
-  margin: 0;
-}
-
-.booking-card h3 {
-  font-size: 12px;
-  // font-weight: bold;
-  margin-top: 8px;
-}
-
-
-.booking-card p {
-  font-size: 14px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
