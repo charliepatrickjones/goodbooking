@@ -1,6 +1,7 @@
 .row.scroll{
-  min-height: 200px;
-  align-items: stretch;
+  min-height: 100px;
+  min-width: 320px;
+  align-items: space-around;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
