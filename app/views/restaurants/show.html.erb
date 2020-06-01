@@ -1,7 +1,8 @@
 <%= render 'shared/alert' %>
+<%= render 'shared/searchbar' %>
 
-<div class="container mt-5 position:left">
-  <div class="card-restaurant">
+<div class="large-card-restaurant ">
+  <div class="large-card-restaurant-avatar">
     <% if @restaurant.photos.attached? %>
       <%= cl_image_tag @restaurant.photos.first.key, width: 800, height: 500, crop: :fill, class:"shadow-sm rounded" %>
     <% else %>
@@ -29,9 +30,6 @@
     </div>
   </div>
 </div>
-
-
-
 <% unless current_user.nil? || %>
   <% if current_user.role == 'guest' %>
     <div class="container mt-4">

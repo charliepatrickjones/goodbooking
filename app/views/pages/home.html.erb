@@ -18,7 +18,7 @@
   <h3>Top rated</h3>
   <div class="row rest-carousel card-restaurant">
     <% @restaurants.each do |restaurant|%>
-      <div class="card-trip mr-2 ml">
+      <div class="card-trip mr-2">
         <% if restaurant.photos.attached? %>
           <%= cl_image_tag restaurant.photos.first.key %>
         <% else %>
