@@ -3,9 +3,10 @@
 }
 
 .user-profile {
-  background-color: #34558B;
-  color: white;
-  height: 280px;
+  background-color: $light-gray;
+  color: #34558B;
+  height:100%;
+  min-height: 280px;
   text-align: center;
   .row {
     height:100%;
@@ -23,23 +24,21 @@
     border-color: $light-gray;
     margin-top: 24px;
     height: 80%;
-    vertical-align: middle;
     object-fit: cover;
   }
 }
 
 .user-scores {
-    height: 75%;
-
+  height: 75%;
   .col-4 {
     h1 {
-      color: white;
+      color: #34558B;
       font-size: 40px;
       margin: 24px auto;
       text-align: center;
     }
     p {
-      color: white;
+      color: #34558B;
       opacity: 1.0;
       font-size: 24px;
       margin: 12px auto;

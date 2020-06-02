@@ -1,20 +1,47 @@
 <div class="container">
-    <div class="guest-profile border align items start">
-      <div class="guest-info">
+  <div class="user-profile p-2">
+    <div class="row">
+      <div class="col-3 user-photo">
         <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, class:"w-25" %>
+          <%= cl_image_tag current_user.photo.key, class:"w-100" %>
         <% else %>
-          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt=""> “https://kitt.lewagon.com/placeholder/users/ssaunier” %>
+          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="w-100" alt=""> “https://kitt.lewagon.com/placeholder/users/ssaunier” %>
         <% end %>
-        <h2><%= current_user.name %></h2>
-        <p><%= current_user.email %></p>
-        <p><strong>Your rating <%= current_user.rating %></strong></p>
       </div>
+      <div class="col-9 user-info">
+        <h2><%= current_user.name %></h2>
+        <div class="row user-scores">
+          <div class="col-4 bookings-count">
+            <h1>1500</h1>
+            <p>Bookings Accepted</p>
+          </div>
+          <div class="col-4 reviews-count">
+            <h1>450</h1>
+            <p>Reviewed by Restaurants</p>
+          </div>
+          <div class="col-4 rating">
+            <% rating_int = current_user.rating.floor %>
+            <% rating_dec = current_user.rating - rating_int %>
+            <h1>
+              <% if rating_dec >= 0.75 %>
+                <%= content_tag(:i, nil, class: "fas fa-star") * (rating_int + 1) %>
+              <% elsif rating_dec >= 0.25 %>
+                <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+                <%= content_tag(:i, nil, class: "fas fa-star-half-alt")%>
+              <% else %>
+                <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+              <% end %>
+            </h1>
+            <p>Average Rating: <%= current_user.rating.round(2) %></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<div class="container mt-5">
 
-<%= render 'shared/guest_bookings_list' %>
+<div class="container mt-5">
+  <%= render 'shared/guest_bookings_list' %>
 </div>
 
 
