@@ -1,0 +1,10 @@
+.row.scroll{
+  min-height: 100px;
+  min-width: 320px;
+  align-items: space-around;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}

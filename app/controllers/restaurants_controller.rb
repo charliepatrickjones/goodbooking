@@ -1,6 +1,8 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   before_action :check_role, only: [:new, :create, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
 
   def index
     @restaurants = Restaurant.all
@@ -16,7 +18,6 @@ class RestaurantsController < ApplicationController
         lng: restaurant.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { restaurant: restaurant })
         # image_url: helpers.asset_url('/app/assets/images/bf-logo.png')
-
       }
     end
   end

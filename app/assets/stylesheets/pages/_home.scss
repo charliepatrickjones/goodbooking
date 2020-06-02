@@ -11,12 +11,13 @@ body {
   padding-right: 50px;
   padding-bottom: 50px;
 }
+
 .card-trip {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   width: 200px;
-
+  height: 240px;
 }
 
 .card-trip > img {
@@ -73,5 +74,18 @@ color: #EFBDEB;
 }
 .card h2 {
   color: #34558B;
+}
+.title {
+  padding: 20px;
+  color: #34558B;
+}
+.homecard {
+  max-width: 200px;
+  max-height: 200px;
+  margin-left:135px;
+  margin-bottom: 20px;
+}
+.title1 {
+  padding-top: 22px;
 }
 
