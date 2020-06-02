@@ -33,10 +33,7 @@
 </div>
 
 <div class="container mt-5">
-  <% if current_user.nil? %>
-    <%= render 'shared/tabpanel' %>
-    <h3> Please sign up to book this restaurant!</h3>
-  <% elsif current_user.role == 'guest' %>
+  <% if current_user.nil? || current_user.role == 'guest' %>
     <div class="row">
       <div class="col-sm-8">
         <%= render 'shared/tabpanel' %>
