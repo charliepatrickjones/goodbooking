@@ -23,13 +23,34 @@
     color: #34558B;
   }
   p {
+    overflow: hidden;
+    height: 1.8em;
     font-size: 12px;
   }
 
+  .card-trip-info {
+    padding: 16px;
+  }
 }
+
+.slick-slide {
+  margin: 8px;
+}
+
+.slick-prev:before {
+  color: #34558B !important;
+}
+.slick-next:before {
+  color: #34558B !important;
+}
+
 
 @media (max-width: 768px){
   .card-trip {
+    height: 240px;
+    img {
+      height: 50%;
+    }
     h2 {
       font-size: 12px;
     }

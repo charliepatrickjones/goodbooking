@@ -6,32 +6,32 @@
     </div>
   </div>
 </div>
-<!-- <div class="rest-carousel">
-  <div>your content</div>
-  <div>your content</div>
-  <div>your content</div>
-  <div>your content</div>
-  <div>your content</div>
-  <div>your content</div>
-</div> -->
+
 <div class="container justify-content-center">
   <h3>Top rated</h3>
-  <div class="row rest-carousel card-restaurant">
+  <div class="row rest-carousel">
     <% @restaurants.each do |restaurant|%>
-      <div class="card-trip mr-2">
+      <div class="card-trip">
         <% if restaurant.photos.attached? %>
           <%= cl_image_tag restaurant.photos.first.key %>
         <% else %>
           <img class="rounded" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <% end %>
-        <div class="card-restaurant-infos">
-          <div>
-            <h2 class="mb-2"><%= link_to restaurant.name,  restaurant_bookings_path(restaurant)%></h2>
-            <p><strong><%= restaurant.category %></strong></p>
-            <p><%= restaurant.address %></p>
-            <%= link_to "Edit", edit_restaurant_path(restaurant) %>
-            <%= link_to "Delete", restaurant_path(restaurant), method: :delete %>
-          </div>
+        <div class="card-trip-info mt-2">
+          <h2 class="mb-2"><%= link_to "#{restaurant.name} (#{restaurant.category}) ",  restaurant_path(restaurant)%></h2>
+          <p class="mb-2"><%= restaurant.address %></p>
+          <h2 class="card-restaurant-rating text-center">
+            <% rating_int = restaurant.rating.floor %>
+            <% rating_dec = restaurant.rating - rating_int %>
+            <% if rating_dec >= 0.75 %>
+              <%= content_tag(:i, nil, class: "fas fa-star") * (rating_int + 1) %>
+            <% elsif rating_dec >= 0.25 %>
+              <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+              <%= content_tag(:i, nil, class: "fas fa-star-half-alt")%>
+            <% else %>
+              <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+            <% end %>
+          </h2>
         </div>
       </div>
     <% end %>

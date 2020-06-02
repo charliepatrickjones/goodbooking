@@ -1,3 +1,7 @@
+// .tabpanel {
+//   height: 360px;
+// }
+
 .nav-link.active {
   background-color: #34558B !important;
 }
@@ -8,6 +12,7 @@
 
 .tab-pane {
   p {
+    min-height: 300px;
     font-size: 16px;
   }
 }
