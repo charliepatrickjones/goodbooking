@@ -90,7 +90,7 @@ url16 = 'https://media.timeout.com/images/103720736/image.jpg'
   restaurant.photos.attach(io: URI.open(url14), filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
   restaurant.save
 
-  restaurant = Restaurant.new(category: 'Hawksmoor', user: User.second, name: 'British' , opening_time: 'Lunch, Happy Hour, Dinner', address: "11 Langley St, Covent Garden, London WC2H 9JG", rating: 5, phone_number: '020 3011 1632', capacity: 100, price_range: 55, description: "High-end steak specialist serving British dry-aged T-bone, D-rump and porterhouse, plus seafood.")
+  restaurant = Restaurant.new(category: 'British', user: User.second, name: 'Hawksmoor' , opening_time: 'Lunch, Happy Hour, Dinner', address: "11 Langley St, Covent Garden, London WC2H 9JG", rating: 5, phone_number: '020 3011 1632', capacity: 100, price_range: 55, description: "High-end steak specialist serving British dry-aged T-bone, D-rump and porterhouse, plus seafood.")
   restaurant.photos.attach(io: URI.open(url15), filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
   restaurant.photos.attach(io: URI.open(url16), filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
   restaurant.save
