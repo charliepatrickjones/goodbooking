@@ -17,8 +17,12 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
 });
 
+
 $('.rest-carousel').slick({
   infinite: true,
   slidesToShow: 3,
   slidesToScroll: 3
 });
+
+
+
