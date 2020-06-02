@@ -8,7 +8,7 @@
 </div>
 
 <div class="container justify-content-center">
-  <h3 class="text-center mb-4">Top rated</h3>
+  <h3 class="text-center mb-4" style="color:#34558B">Top rated</h3>
   <div class="row rest-carousel">
     <% @restaurants.each do |restaurant|%>
       <div class="card-trip">
@@ -37,17 +37,21 @@
     <% end %>
   </div>
   <div class="row justify-content-center">
-    <h3>Why Good Booking?</h3>
+    <div class="title">
+      <h3>Why Good Booking?</h3>
+    </div>
     <div class="d-flex">
       <div class="col-6">
         <div>
-          <h3>Save time</h3>
+          <img src="assets/save-time.png" alt="save time" class="homecard">
+          <h3 style="color:#EFBDEB">Save time</h3>
           <p>You are a busy restaurant owner, and dont have time to allow bad bookings into your restaurant. Booking with us saves you, your staff and your customer valuable time.</p>
         </div>
       </div>
        <div class="col-6">
         <div>
-          <h3>Rate and Review</h3>
+          <img src="assets/rate-and-review.png" alt="rate and review" class="homecard">
+          <h3 style="color:#EFBDEB">Rate and Review</h3>
           <p>We provide you with a quick,clear and easy way to leave reviews and ratings on your experience. Whether that be as a guest reviewing a restaurant, or a restaurant reviewing a guest.</p>
         </div>
       </div>
@@ -55,13 +59,17 @@
     <div class="d-flex">
       <div class="col-6">
         <div>
-          <h3>Take control</h3>
+          <img src="assets/take-control.png" alt="take control" class="homecard">
+          <h3 style="color:#EFBDEB">Take control</h3>
           <p>We want to put control back in the restaurant owners hands. Allowing you to carefully consider your guests dining history, punctuality to a reservation and past reviews, ensuring its a good match.</p>
         </div>
       </div>
        <div class="col-6">
         <div>
-          <h3>Join our community</h3>
+          <img src="assets/community.png" alt="community" class="homecard">
+          <div class="title1">
+          <h3 style="color:#EFBDEB">Join our community</h3>
+          </div>
           <p>Be part of a burgeoning foodie community that are improving the restaurant industry whilst being on the same mission, to be the best booking.</p>
         </div>
       </div>
