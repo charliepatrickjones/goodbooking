@@ -33,20 +33,16 @@
 </div>
 
 <div class="container mt-5">
-  <% if current_user.nil? || current_user.role == 'guest' %>
-    <div class="row">
-      <div class="col-sm-8">
-        <%= render 'shared/tabpanel' %>
-      </div>
-      <div class="col-sm-4">
-        <% if @booking.date.nil? || @booking.date < Date.today %>
-          <%= render 'shared/booking_form_a' %>
-        <% else %>
-          <%= render 'shared/booking_form_b' %>
-        <% end %>
-      </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <%= render 'shared/tabpanel' %>
     </div>
-  <% else %>
-    <%= render 'shared/tabpanel' %>
-  <% end %>
+    <div class="col-sm-4">
+      <% if @booking.date.nil? || @booking.date < Date.today %>
+        <%= render 'shared/booking_form_a' %>
+      <% else %>
+        <%= render 'shared/booking_form_b' %>
+      <% end %>
+    </div>
+  </div>
 </div>
