@@ -21,9 +21,14 @@ document.addEventListener('turbolinks:load', () => {
 $('.rest-carousel').slick({
   infinite: true,
   slidesToShow: 3,
-  slidesToScroll: 3
+  slidesToScroll: 3,
+  autoplay: true,
+  autoplaySpeed: 3000
 });
 
-$('.tab-carousel').slick();
+$('.tab-carousel').slick({
+  autoplay: true,
+  autoplaySpeed: 1000
+});
 
 
