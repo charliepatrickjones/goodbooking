@@ -24,5 +24,6 @@ $('.rest-carousel').slick({
   slidesToScroll: 3
 });
 
+$('.tab-carousel').slick();
 
 

@@ -14,25 +14,29 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    @review = Review.new
-
-    @remaining_slots = find_booking_slots
-    set_bookings
-    if @booking.party.nil? || @booking.time.nil?
-      render "restaurants/show"
-    elsif @booking.date < Date.today
-      render "restaurants/show"
-    elsif @booking.party > @remaining_slots[@booking.time]
-      redirect_to @restaurant, warning: "you can't book more than available seats"
-      # flash.now[:alert] = "you can't book more than available seats"
-      # render 'restaurants/show'
-    elsif @booking.save
-      redirect_to user_path(current_user), success: 'your request has been sent!'
-      ## will update to redircet to user profile page
+    if current_user.nil?
+      redirect_to  new_user_registration_path
     else
-      redirect_to @restaurant, warning: "Invalid data. Try it again."
+      @booking = Booking.new(booking_params)
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      @review = Review.new
+
+      @remaining_slots = find_booking_slots
+      set_bookings
+      if @booking.party.nil? || @booking.time.nil?
+        render "restaurants/show"
+      elsif @booking.date < Date.today
+        render "restaurants/show"
+      elsif @booking.party > @remaining_slots[@booking.time]
+        redirect_to @restaurant, warning: "you can't book more than available seats"
+        # flash.now[:alert] = "you can't book more than available seats"
+        # render 'restaurants/show'
+      elsif @booking.save
+        redirect_to user_path(current_user), success: 'your request has been sent!'
+        ## will update to redircet to user profile page
+      else
+        redirect_to @restaurant, warning: "Invalid data. Try it again."
+      end
     end
   end
 

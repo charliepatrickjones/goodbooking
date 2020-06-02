@@ -11,8 +11,14 @@
 }
 
 .tab-pane {
+  min-height: 300px;
   p {
-    min-height: 300px;
     font-size: 16px;
   }
+}
+
+.tabpanel-photo {
+  object-fit: cover;
+  border: 1px solid $light-gray;
+  border-radius: 5%;
 }
