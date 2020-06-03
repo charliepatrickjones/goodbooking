@@ -1,10 +1,10 @@
 <div class="container">
   <%= render "shared/searchbar" %>
   <div class="user-profile p-2">
-    <div class="row">
-      <div class="col-3 user-photo">
+    <div class="row h-100">
+      <div class="col-3 user-photo h-100">
         <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, class:"w-100" %>
+          <%= cl_image_tag current_user.photo.key, class:"w-100 h-75" %>
         <% else %>
           <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="w-100" alt=""> “https://kitt.lewagon.com/placeholder/users/ssaunier” %>
         <% end %>
