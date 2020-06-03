@@ -3,8 +3,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 import 'slick-carousel';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
 
 import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
