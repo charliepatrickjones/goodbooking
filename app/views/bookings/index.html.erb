@@ -106,8 +106,7 @@
                   <% end %>
                 </h3>
                 <h3><%= content_tag(:i, nil, class: "fas fa-user") * (rating_int + 1) %></h3>
-                <h3><%= link_to 'Rate', "#", class: "btn btn-primary btn-sm  mt-2" %></h3>
-              </div>
+                <button type="button" class="btn btn-primary btn-sm p-1 mb-2 ml-4" data-toggle="modal" data-target=<%= "#booking-#{booking.id}" %>>Rate</button>              </div>
             </div>
           <% end %>
         <% end %>
@@ -115,3 +114,32 @@
     <% end %>
   </div>
 </div>
+
+<% @bookings.each do |booking| %> 
+  <% if booking.accepted && booking.date < Date.today %>
+
+
+<!-- Modal -->
+  <div class="modal fade" id=<%="booking-#{booking.id}"%> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+       <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Please Leave A Review</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [booking, Review.new] do |f| %>
+          <%= f.input :booking_rating, as: :select, collection: 1..5 %>
+          <%= f.input :punctuality_rating, as: :select, collection:1..5 %>
+          <%= f.input :content %>
+          <%= f.button :submit, class:"btn btn-success" %>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
+  <% end %>
+<% end %>
