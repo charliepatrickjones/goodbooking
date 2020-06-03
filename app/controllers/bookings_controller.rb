@@ -20,8 +20,8 @@ class BookingsController < ApplicationController
 
     if current_user.nil?
       redirect_to new_user_registration_path
-    elsif current_user.role = 'owner'
-      redirect_to @restaurant, warning: "booking feature available for guests"
+    # elsif current_user.role = 'owner'
+    #   redirect_to @restaurant, warning: "booking feature available for guests"
     else
       @remaining_slots = find_booking_slots
       set_bookings
