@@ -1,31 +1,6 @@
-<div class="accepeted">
-  <h2 class="text-center mb-4"> Accepted Bookings</h2>
-  <div class="row">
-    <% @bookings.each do |booking|%>
-    <% restaurant = booking.restaurant %>
-      <% if booking.accepted && booking.date >= Date.today %>
-        <div class="card-trip mr-2 ml">
-          <% if restaurant.photos.attached? %>
-            <%= cl_image_tag restaurant.photos.first.key %>
-          <% else %>
-            <img class="rounded" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <% end %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= link_to restaurant.name, restaurant_path(restaurant)%></h2>
-              <p><%=booking.time%>, <%=booking.date%></p>
-              <p><strong><%= restaurant.category %></strong></p>
-              <p><%= restaurant.address %></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
 <div class="not-confirmed-yet">
   <h2 class="text-center mb-4"> Waiting for Confirmation</h2>
-  <div class="row">
+  <div class="row rest-carousel">
     <% @bookings.each do |booking|%>
     <% restaurant = booking.restaurant %>
       <% if !booking.accepted && booking.date >= Date.today %>
@@ -48,9 +23,36 @@
     <% end %>
   </div>
 </div>
+
+<div class="accepeted">
+  <h2 class="text-center mb-4"> Accepted Bookings</h2>
+  <div class="row rest-carousel">
+    <% @bookings.each do |booking|%>
+    <% restaurant = booking.restaurant %>
+      <% if booking.accepted && booking.date >= Date.today %>
+        <div class="card-trip mr-2 ml">
+          <% if restaurant.photos.attached? %>
+            <%= cl_image_tag restaurant.photos.first.key %>
+          <% else %>
+            <img class="rounded" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= link_to restaurant.name, restaurant_path(restaurant)%></h2>
+              <p><%=booking.time%>, <%=booking.date%></p>
+              <p><strong><%= restaurant.category %></strong></p>
+              <p><%= restaurant.address %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <div class="your-history">
   <h2 class="text-center mb-4">Your History</h2>
-  <div class="row">
+  <div class="row rest-carousel">
     <% @bookings.each do |booking|%>
     <% restaurant = booking.restaurant %>
       <% if booking.accepted && booking.date < Date.today %>

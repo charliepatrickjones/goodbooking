@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-6">
-        <h1>Add your restaurant</h1>
+        <h1 class="text-center mb-4">Add your restaurant</h1>
           <%= simple_form_for @restaurant do |f| %>
           <%= f.input :name, label: 'Restaurant Name', error: 'Restaurant Name is mandatory, please specify one' %>
           <%= f.input :category, label: 'Category', error: 'Category is mandatory, please specify one' %>
@@ -12,9 +12,9 @@
           <%= f.input :menu, label: 'attatch or contact GoodBooking admin' %>
           <%= f.input :price_range, placeholder: '£££' %>
           <%= f.input :photos, as: :file , input_html: { multiple: true } %>
-          <%= f.button :submit, class: "btn-btn-primary" %>
-          <%= link_to "cancel", dashboard_path(current_user)  %>
+          <%= f.button :submit, class: "btn-btn-primary text-white mt-4" %>
         <% end %>
+          <p class="mt-2"><%= link_to "cancel", dashboard_path(current_user)%></p>
       </div>
     </div>
 </div>
