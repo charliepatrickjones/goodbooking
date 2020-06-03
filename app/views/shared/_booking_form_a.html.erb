@@ -1,9 +1,9 @@
-<div class="container mt-3 mb-5">
+<div class="container mt-3 mb-5 border rounded p-4">
   <% if @booking.date.present? && @booking.date < Date.today %>
     <h5 style="color:red;" class="text-center">Please set a future date</h5>
   <% end %>
   <%= simple_form_for [@restaurant, @booking] do |f| %>
     <%= f.input :date , as: :date, html5: true %>
-    <%= f.submit 'Check Availablity' %>
+    <%= f.submit 'Check Availablity', class:'btn btn-primary text-white ml-1' %>
   <% end %>
 </div>

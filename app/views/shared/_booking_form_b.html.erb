@@ -1,6 +1,5 @@
-<div class="container">
+<div class="container border rounded p-2">
   <div class="remaining-capacity m-auto text-center">
-    <h4> Remaining Seats</h4>
     <div class="row mt-4">
       <% @remaining_slots.each do |key, value| %>
         <div class="col-4 slots-per-meal">
@@ -15,7 +14,7 @@
       <%= f.input :date , as: :date, html5: true, input_html: { value: @booking.date } %>
       <%= f.input :time, as: :select, collection: @remaining_slots.keys %>
       <%= f.input :party, as: :select, collection: (0..@remaining_slots.values.max) %>
-      <%= f.submit 'Request' %>
+      <%= f.submit 'Request', class:'btn btn-primary text-white mt-2' %>
     <% end %>
   </div>
 </div>
