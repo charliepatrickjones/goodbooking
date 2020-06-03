@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :restaurant
   belongs_to :user
-  has_many :reviews
+  has_one :review
 
   validates :date, :time, :party, presence: true
 end

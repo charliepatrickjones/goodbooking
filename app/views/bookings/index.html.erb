@@ -105,8 +105,13 @@
                     <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
                   <% end %>
                 </h3>
-                <h3><%= content_tag(:i, nil, class: "fas fa-user") * (rating_int + 1) %></h3>
-                <button type="button" class="btn btn-primary btn-sm p-1 mb-2 ml-4" data-toggle="modal" data-target=<%= "#booking-#{booking.id}" %>>Rate</button>              </div>
+                <% if booking.review.nil? %>
+                  <button type="button" class="btn btn-primary btn-sm p-1 mb-2 ml-4" data-toggle="modal" data-target=<%= "#booking-#{booking.id}" %>>Rate</button>
+                <% else %>
+                  <button disabled type="button" class="btn btn-primary btn-sm p-1 mb-2 ml-4">Rated!</button>
+                <% end %>
+
+              </div>
             </div>
           <% end %>
         <% end %>
@@ -115,10 +120,8 @@
   </div>
 </div>
 
-<% @bookings.each do |booking| %> 
+<% @bookings.each do |booking| %>
   <% if booking.accepted && booking.date < Date.today %>
-
-
 <!-- Modal -->
   <div class="modal fade" id=<%="booking-#{booking.id}"%> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

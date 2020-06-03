@@ -18,7 +18,6 @@
 #                   price_range: 2, capacity: 500, user: user})
 # end
 
-
 require "open-uri"
 require 'faker'
 
@@ -97,8 +96,17 @@ url16 = 'https://media.timeout.com/images/103720736/image.jpg'
 
 
 
-15.times do
+10.times do
   Booking.create(date: Date.new(2020,5,rand(15..28)), time:'Lunch', accepted: true, party: 3, user: User.first, restaurant: Restaurant.all.sample)
   Booking.create(date: Date.new(2020,6,rand(10..25)), time:'Dinner', accepted: [true, false].sample, party: 3, user: User.first, restaurant: Restaurant.all.sample)
   Booking.create(date: Date.new(2020,6,rand(10..25)), time:'Lunch', accepted: [true, false].sample, party: 3, user: User.first, restaurant: Restaurant.all.sample)
+end
+
+5.times do
+  Booking.all.each do |booking|
+    if booking.date < Date.today
+      user = booking.user
+      Review.create(punctuality_rating: rand(6..10)/2.0, booking_rating: rand(6..10)/2.0, content: Faker::Marketing.buzzwords, user:user, booking:booking)
+    end
+  end
 end

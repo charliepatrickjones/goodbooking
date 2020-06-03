@@ -1,0 +1,40 @@
+
+
+<div class="row">
+  <% rating_int = review.booking_rating.floor %>
+  <% rating_dec = review.booking_rating - rating_int %>
+  <div class="col-8">
+    <p>Overall</p>
+  </div>
+  <div class="col-4">
+    <p class="card-restaurant-rating text-center">
+      <% if rating_dec >= 0.75 %>
+        <%= content_tag(:i, nil, class: "fas fa-star") * (rating_int + 1) %>
+      <% elsif rating_dec >= 0.25 %>
+        <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+        <%= content_tag(:i, nil, class: "fas fa-star-half-alt")%>
+      <% else %>
+        <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+      <% end %>
+    </p>
+  </div>
+  <% rating_int = review.punctuality_rating.floor %>
+  <% rating_dec = review.punctuality_rating - rating_int %>
+  <div class="col-8">
+    <p>Punctuality</p>
+  </div>
+  <div class="col-4">
+    <p class="card-restaurant-rating text-center">
+      <% if rating_dec >= 0.75 %>
+        <%= content_tag(:i, nil, class: "fas fa-star") * (rating_int + 1) %>
+      <% elsif rating_dec >= 0.25 %>
+        <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+        <%= content_tag(:i, nil, class: "fas fa-star-half-alt")%>
+      <% else %>
+        <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+
