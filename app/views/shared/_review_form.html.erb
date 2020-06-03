@@ -1,0 +1,6 @@
+<%= simple_form_for [booking, review] do |f| %>
+  <%= f.input :booking_rating, as: :select, collection: 1..5 %>
+  <%= f.input :punctuality_rating, as: :select, collection:1..5 %>
+  <%= f.input :content %>
+  <%= f.button :submit, class:"btn btn-success" %>
+<% end %>
