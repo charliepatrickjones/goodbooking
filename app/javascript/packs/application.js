@@ -21,6 +21,25 @@ document.addEventListener('turbolinks:load', () => {
     slidesToShow: 3,
     slidesToScroll: 3,
     autoplay: true,
+    autoplaySpeed: 2500
+  });
+
+  $('.tab-carousel').slick({
+    autoplay: true,
+    autoplaySpeed: 1000
+  });
+});
+
+document.addEventListener('turbolinks:render', () => {
+  // Call your functions here, e.g:
+  // initSelect2();
+  // initMapbox();
+
+  $('.rest-carousel').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    autoplay: true,
     autoplaySpeed: 3000
   });
 
@@ -29,3 +48,5 @@ document.addEventListener('turbolinks:load', () => {
     autoplaySpeed: 1000
   });
 });
+
+
