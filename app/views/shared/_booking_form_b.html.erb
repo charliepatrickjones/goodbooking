@@ -14,7 +14,7 @@
       <%= f.input :date , as: :date, html5: true, input_html: { value: @booking.date } %>
       <%= f.input :time, as: :select, collection: @remaining_slots.keys %>
       <%= f.input :party, as: :select, collection: (0..@remaining_slots.values.max) %>
-      <%= f.submit 'Request', class:'btn btn-primary text-white mt-2' %>
+      <%= f.submit 'Request', class:'btn btn-primary text-white mt-2 booking-submit-btn' %>
     <% end %>
   </div>
 </div>
