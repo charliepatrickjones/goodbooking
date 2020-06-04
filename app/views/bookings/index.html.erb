@@ -10,15 +10,15 @@
       <% end %>
     </div>
     <% if @bookings.empty? %>
-      <h2 class="m-5">No booking requested yet</h2>
+      <h2 class="m-5 text-dark">No booking requested yet</h2>
     <% else %>
-      <h2 class="m-5">Requests waiting for accepted</h2>
+      <h2 class="m-5 text-dark">Requests waiting for accepted</h2>
       <div class="row scroll">
         <%  @bookings.each do |booking| %>
           <% guest = booking.user %>
           <% restaurant = booking.restaurant %>
           <% if !booking.accepted && booking.date >= Date.today %>
-            <div class="booking-card m-2 col-4">
+            <div class="booking-card m-2 col-4 p-0">
               <% if guest.photo.attached? %>
                 <%= cl_image_tag guest.photo.key %>
               <% else %>
@@ -47,12 +47,12 @@
         <% end %>
       </div>
 
-      <h2 class="m-5" >Accepted Requests</h2>
+      <h2 class="m-5 text-dark" >Accepted Requests</h2>
       <div class="row scroll">
         <% @bookings.each do |booking| %>
           <% guest = booking.user %>
           <% if booking.accepted && booking.date >= Date.today %>
-            <div class="booking-card m-2 col-4">
+            <div class="booking-card m-2 col-4 p-0">
               <% if guest.photo.attached? %>
                 <%= cl_image_tag guest.photo.key %>
               <% else %>
@@ -80,12 +80,12 @@
         <% end %>
       </div>
 
-      <h2 class="m-5" >Past Guests</h2>
+      <h2 class="m-5 text-dark" >Past Guests</h2>
       <div class="row scroll mb-4">
         <% @bookings.each do |booking| %>
           <% guest = booking.user %>
           <% if booking.accepted && booking.date < Date.today %>
-            <div class="booking-card m-2 col-4">
+            <div class="booking-card m-2 col-4 p-0">
               <% if guest.photo.attached? %>
                 <%= cl_image_tag guest.photo.key %>
               <% else %>
@@ -95,7 +95,7 @@
                 <h2><%= guest.name %></h2>
                 <% rating_int = guest.rating.floor %>
                 <% rating_dec = guest.rating - rating_int %>
-                <h3 class="card-restaurant-rating text-center">
+                <h3 class="card-restaurant-rating text-center mt-2">
                   <% if rating_dec >= 0.75 %>
                     <%= content_tag(:i, nil, class: "fas fa-star") * (rating_int + 1) %>
                   <% elsif rating_dec >= 0.25 %>
@@ -106,9 +106,9 @@
                   <% end %>
                 </h3>
                 <% if booking.review.nil? %>
-                  <button type="button" class="btn btn-primary btn-sm p-1 mb-2" data-toggle="modal" data-target=<%= "#booking-#{booking.id}" %> >Rate</button>
+                  <button type="button" class="btn btn-primary btn-sm p-1 mt-2" data-toggle="modal" data-target=<%= "#booking-#{booking.id}" %> >Rate</button>
                 <% else %>
-                  <button disabled type="button" class="btn btn-primary btn-sm p-1 mb-2">Rated!</button>
+                  <button disabled type="button" class="btn btn-primary btn-sm p-1 mt-2">Rated!</button>
                 <% end %>
 
               </div>

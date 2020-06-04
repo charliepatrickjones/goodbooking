@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="user-profile border p-2">
+  <div class="user-profile p-4">
     <div class="row">
-      <div class="col-3 user-photo width: 150px height: 150px">
+      <div class="col-3 user-photo">
         <% if current_user.photo.attached? %>
           <%= cl_image_tag current_user.photo.key, class:"w-100" %>
         <% else %>
