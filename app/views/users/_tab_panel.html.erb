@@ -13,14 +13,14 @@
   </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
+  <div class="tab-pane fade show active p-2" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
     <% if Review.where(user_id: current_user.id).empty? %>
       <h2 class="text-center">No review posted yet</h2>
     <% else %>
-      <%  current_user.bookings.each do |booking| %>
-        <% review = booking.review %>
+      <%  @reviews.each do |review| %>
+        <% booking = review.booking %>
         <% unless review.nil? %>
-          <div class="row mt-2 mb-2">
+          <div class="row mt-2 mb-2 border-bottom border-primary">
             <div class="col-6">
               <h3><%= link_to booking.restaurant.name, restaurant_path(booking.restaurant)%></h3>
               <p><%= review.content %></p>

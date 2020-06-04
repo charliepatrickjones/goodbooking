@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
-
   def show
-    @bookings = Booking.where(user_id: current_user.id)
+    @bookings = Booking.where(user_id: current_user.id).order(:date)
+
+    @reviews = Review.where(user_id: current_user.id)
+    @reviews = @reviews.order(id: :desc)
+
 
     review_count = 0.0
     total_rating = 0.0
@@ -17,7 +20,6 @@ class UsersController < ApplicationController
       current_user.rating = total_rating / review_count
       current_user.save!
     end
-
   end
 
   def dashboard
