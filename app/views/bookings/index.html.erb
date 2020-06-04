@@ -25,7 +25,7 @@
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
               <% end %>
               <div class="card-product-infos">
-                <h2><%= guest.name %></h2>
+                <h2><%= link_to guest.name, user_path(guest) %></h2>
                 <% rating_int = guest.rating.floor %>
                 <% rating_dec = guest.rating - rating_int %>
                 <h3 class="card-restaurant-rating text-center">
