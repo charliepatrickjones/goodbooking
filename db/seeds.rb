@@ -6,12 +6,12 @@ Booking.destroy_all
 Restaurant.destroy_all
 User.destroy_all
 
-guest = User.new(name: 'Samantha Jones', email: "guest@test.com", password: "123456", role: "guest", rating: 3.5)
+guest = User.new(name: 'Samantha Jones', email: "guest@test.com", password: "123456", role: "guest", rating: 4.5)
 file = URI.open('https://images.unsplash.com/photo-1506956191951-7a88da4435e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80')
 guest.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
 guest.save
 
-guest = User.new(name: 'George Livingstone', email: "guest1@test.com", password: "123456", role: "guest", rating: 3.5)
+guest = User.new(name: 'George Livingstone', email: "guest1@test.com", password: "123456", role: "guest", rating: 1.0)
 file = URI.open('https://images.unsplash.com/photo-1506919258185-6078bba55d2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=515&q=80')
 guest.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
 guest.save
@@ -85,6 +85,11 @@ url16 = 'https://media.timeout.com/images/103720736/image.jpg'
   Booking.create(date: Date.new(2020,6,rand(10..25)), time:'Lunch', accepted: [true, false].sample, party: 3, user: User.first, restaurant: Restaurant.all.sample)
 end
 
+15.times do
+  Booking.create(date: Date.new(2020,5,rand(15..28)), time:'Lunch', accepted: true, party: 3, user: User.second, restaurant: Restaurant.all.sample)
+  Booking.create(date: Date.new(2020,6,rand(10..25)), time:'Dinner', accepted: [true, false].sample, party: 3, user: User.second, restaurant: Restaurant.all.sample)
+  Booking.create(date: Date.new(2020,6,rand(10..25)), time:'Lunch', accepted: [true, false].sample, party: 3, user: User.second, restaurant: Restaurant.all.sample)
+end
 
 Booking.all.each do |booking|
   if booking.date < Date.today
