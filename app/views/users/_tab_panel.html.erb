@@ -22,8 +22,8 @@
         <% unless review.nil? %>
           <div class="row mt-2 mb-2">
             <div class="col-6">
-              <h3><%= review.content %></h3>
-              <p>From <strong><%= booking.restaurant.name %></strong></p>
+              <h3><%= link_to booking.restaurant.name, restaurant_path(booking.restaurant)%></h3>
+              <p><%= review.content %></p>
             </div>
             <div class="col-6">
               <%= render partial: 'star_rating', locals: { review: review } %>
@@ -105,7 +105,7 @@
               <% end %>
               <div class="card-trip-infos">
                 <div>
-                  <h2><%= link_to restaurant.name, restaurant_path(restaurant)%></h2>
+                  <h2><%= link_to restaurant.name, restaurant_path(restaurant), class: 'text-decoration-none' %></h2>
                   <p><%=booking.time%>, <%=booking.date%></p>
                   <p><strong><%= restaurant.category %></strong></p>
                   <p><%= restaurant.address %></p>
