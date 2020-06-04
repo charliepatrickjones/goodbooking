@@ -6,7 +6,7 @@ Booking.destroy_all
 Restaurant.destroy_all
 User.destroy_all
 
-guest = User.new(name: 'Samantha Brown', email: "guest@test.com", password: "123456", role: "guest", rating: 3.5)
+guest = User.new(name: 'Samantha Jones', email: "guest@test.com", password: "123456", role: "guest", rating: 3.5)
 file = URI.open('https://images.unsplash.com/photo-1506956191951-7a88da4435e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80')
 guest.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
 guest.save
