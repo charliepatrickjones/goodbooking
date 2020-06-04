@@ -6,8 +6,13 @@ Booking.destroy_all
 Restaurant.destroy_all
 User.destroy_all
 
-guest = User.new(name: 'Fred “The Foodie” Flinstone', email: "guest@test.com", password: "123456", role: "guest", rating: 3.5)
-file = URI.open('https://66.media.tumblr.com/382476e2affeafa41e46411c885a48eb/fb8e38c4f3555302-3d/s1280x1920/f79bd443fcce1f82ecc7c8deaa4e379ab15b453f.jpg')
+guest = User.new(name: 'Samantha Brown', email: "guest@test.com", password: "123456", role: "guest", rating: 3.5)
+file = URI.open('https://images.unsplash.com/photo-1506956191951-7a88da4435e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80')
+guest.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
+guest.save
+
+guest = User.new(name: 'George Livingstone', email: "guest1@test.com", password: "123456", role: "guest", rating: 3.5)
+file = URI.open('https://images.unsplash.com/photo-1506919258185-6078bba55d2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=515&q=80')
 guest.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
 guest.save
 
