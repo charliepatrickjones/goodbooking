@@ -25,7 +25,7 @@
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
               <% end %>
               <div class="card-product-infos">
-                <h2><%= link_to guest.name, user_path(guest) %></h2>
+                <a href="#" data-toggle="modal" data-target=<%= "#booking-#{booking.id}" %> ><%= guest.name %></a>
                 <% rating_int = guest.rating.floor %>
                 <% rating_dec = guest.rating - rating_int %>
                 <h3 class="card-restaurant-rating text-center">
@@ -106,9 +106,9 @@
                   <% end %>
                 </h3>
                 <% if booking.review.nil? %>
-                  <button type="button" class="btn btn-primary btn-sm p-1 mb-2 ml-4" data-toggle="modal" data-target=<%= "#booking-#{booking.id}" %>>Rate</button>
+                  <button type="button" class="btn btn-primary btn-sm p-1 mb-2" data-toggle="modal" data-target=<%= "#booking-#{booking.id}" %> >Rate</button>
                 <% else %>
-                  <button disabled type="button" class="btn btn-primary btn-sm p-1 mb-2 ml-4">Rated!</button>
+                  <button disabled type="button" class="btn btn-primary btn-sm p-1 mb-2">Rated!</button>
                 <% end %>
 
               </div>
@@ -120,29 +120,65 @@
   </div>
 </div>
 
-<% @bookings.each do |booking| %>
-  <% if booking.accepted && booking.date < Date.today %>
+
 <!-- Modal -->
-  <div class="modal fade" id=<%="booking-#{booking.id}"%> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Please Leave A Review</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for [booking, Review.new] do |f| %>
-          <%= f.input :booking_rating, as: :select, collection: 1..5 %>
-          <%= f.input :punctuality_rating, as: :select, collection:1..5 %>
-          <%= f.input :content %>
-          <%= f.button :submit, class:"btn btn-primary mt-4" %>
-          <button type="button" class="btn bg-white text-primary mt-4" data-dismiss="modal">Cancel</button>
-        <% end %>
+
+<% @bookings.each do |booking| %>
+
+  <% if !booking.accepted && booking.date >= Date.today %>
+    <div class="modal fade" id=<%="booking-#{booking.id}"%> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Reviews for the guest</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <% guest = booking.user %>
+            <% reviews = guest.reviews %>
+            <% unless reviews.nil?%>
+              <% reviews.each do |review| %>
+                <div class="row border-bottom mt-2 ">
+                  <div class="col-6">
+                    <p><strong><%= link_to review.booking.restaurant.name, restaurant_path(review.booking.restaurant)%></strong> </p>
+                    <p><%= review.content %></p>
+                  </div>
+                  <div class="col-6">
+                    <%= render partial: 'star_rating', locals: { review: review } %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <button type="button" class="btn bg-white text-primary mt-4" data-dismiss="modal">Back</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
+  <% end %>
+
+  <% if booking.accepted && booking.date < Date.today %>
+    <div class="modal fade" id=<%="booking-#{booking.id}"%> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Please Leave A Review</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for [booking, Review.new] do |f| %>
+              <%= f.input :booking_rating, as: :select, collection: 1..5 %>
+              <%= f.input :punctuality_rating, as: :select, collection:1..5 %>
+              <%= f.input :content %>
+              <%= f.button :submit, class:"btn btn-primary mt-4" %>
+              <button type="button" class="btn bg-white text-primary mt-4" data-dismiss="modal">Cancel</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 <% end %>

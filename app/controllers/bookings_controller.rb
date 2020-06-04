@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.where(restaurant_id: params[:restaurant_id])
+    @bookings = Booking.where(restaurant_id: params[:restaurant_id]).order(date: :desc)
   end
 
   def show
