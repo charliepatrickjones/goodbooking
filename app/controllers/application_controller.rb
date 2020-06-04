@@ -7,10 +7,9 @@ class ApplicationController < ActionController::Base
     else
       dashboard_path(current_user)
     end
-
   end
-def default_url_options
-  { host: ENV["DOMAIN"] || "localhost:3000" }
-end
 
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end
