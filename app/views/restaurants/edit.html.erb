@@ -9,7 +9,7 @@
           <%= f.input :capacity, label: 'Capacity', error: 'Address is mandatory, please specify one' %>
           <%= f.input :phone_number, label: 'Phone Number', error: 'Phone Number is mandatory, please specify one' %>
           <%= f.input :description, error: 'Description is mandatory, please specify one' %>
-          <%= f.input :menu, label: 'attatch or contact GoodBooking admin' %>
+          <%= f.input :menu, 'attatch or contact GoodBooking admin' %>
           <%= f.input :price_range, placeholder: '£££' %>
           <%= f.input :photos, as: :file , input_html: { multiple: true } %>
           <%= f.button :submit, class: "btn-btn-primary" %>
