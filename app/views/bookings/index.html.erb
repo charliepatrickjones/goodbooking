@@ -39,7 +39,7 @@
                   <% end %>
                 </h3>
                 <h3><%= booking.time%>, <%= booking.date %></h3>
-                <h3><%= content_tag(:i, nil, class: "fas fa-user") * (rating_int + 1) %></h3>
+                <h3><%= content_tag(:i, nil, class: "fas fa-user") * booking.party %></h3>
                 <h3><%= link_to 'Accept', accept_path(restaurant, booking), class: "btn btn-primary btn-sm mt-2" %></h3>
               </div>
             </div>
@@ -73,7 +73,7 @@
                   <% end %>
                 </h3>
                 <h3><%= booking.time%>, <%= booking.date %></h3>
-                <h3><%= content_tag(:i, nil, class: "fas fa-user") * (rating_int + 1) %></h3>
+                <h3><%= content_tag(:i, nil, class: "fas fa-user") * booking.party %></h3>
               </div>
             </div>
           <% end %>
@@ -105,6 +105,7 @@
                     <%= content_tag(:i, nil, class: "fas fa-star") * rating_int %>
                   <% end %>
                 </h3>
+                <h3><%= booking.time %>, <%= booking.date %></h3>
                 <% if booking.review.nil? %>
                   <button type="button" class="btn btn-primary btn-sm p-1 mt-2" data-toggle="modal" data-target=<%= "#booking-#{booking.id}" %> >Rate</button>
                 <% else %>

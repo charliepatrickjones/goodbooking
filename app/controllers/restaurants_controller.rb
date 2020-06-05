@@ -3,7 +3,6 @@ class RestaurantsController < ApplicationController
   before_action :check_role, only: [:new, :create, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-
   def index
     @restaurants = Restaurant.all
     if params[:category].present?
