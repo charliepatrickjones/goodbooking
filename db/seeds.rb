@@ -6,15 +6,17 @@ Booking.destroy_all
 Restaurant.destroy_all
 User.destroy_all
 
-guest = User.new(name: 'Samantha Jones', email: "guest@test.com", password: "123456", role: "guest", rating: 4.5)
+p_guest = User.new(name: 'Samantha Jones', email: "guest@test.com", password: "123456", role: "guest", rating: 4.5)
 file = URI.open('https://images.unsplash.com/photo-1495490140452-5a226aef25d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')
-guest.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
-guest.save
+p_guest.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
+p_guest.save
 
-guest = User.new(name: 'George Livingstone', email: "guest1@test.com", password: "123456", role: "guest", rating: 1.0)
+n_guest = User.new(name: 'George Livingstone', email: "guest1@test.com", password: "123456", role: "guest", rating: 1.0)
 file = URI.open('https://images.unsplash.com/photo-1506919258185-6078bba55d2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=515&q=80')
-guest.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
-guest.save
+n_guest.photo.attach(io: file, filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
+n_guest.save
+
+guests = [p_guest, n_guest]
 
 owner = User.new(name: 'Francesco Gardner', email: "owner@test.com", password: "123456", role: "owner", rating: 3.5)
 file = URI.open('https://i.guim.co.uk/img/media/ff3eaa5dd00f096d763630264d8fbddde0ad5f11/72_0_1319_792/master/1319.jpg?width=1200&quality=85&auto=format&fit=max&s=d4c1ec9fd6496525dab974b6fe8153ef')
@@ -79,24 +81,32 @@ url16 = 'https://media.timeout.com/images/103720736/image.jpg'
   restaurant.photos.attach(io: URI.open(url16), filename: 'seed-restaurant.jpg', content_type: 'image/jpg')
   restaurant.save
 
-15.times do
-  Booking.create(date: Date.new(2020,5,rand(15..28)), time:'Lunch', accepted: true, party: 3, user: User.first, restaurant: Restaurant.all.sample)
-  Booking.create(date: Date.new(2020,6,rand(10..25)), time:'Dinner', accepted: [true, false].sample, party: 3, user: User.first, restaurant: Restaurant.all.sample)
-  Booking.create(date: Date.new(2020,6,rand(10..25)), time:'Lunch', accepted: [true, false].sample, party: 3, user: User.first, restaurant: Restaurant.all.sample)
+times = ["Lunch", "Dinner", "Happy Hour"]
+
+40.times do
+  Booking.create(date: Date.new(2020,6,rand(1..4)), time:times.sample, accepted: true, party: rand(1..4), user: guests.sample, restaurant: Restaurant.all.sample)
+  Booking.create(date: Date.new(2020,6,rand(6..15)), time:times.sample, accepted: [true, false].sample, party: rand(1..4), user: guests.sample, restaurant: Restaurant.all.sample)
+  Booking.create(date: Date.new(2020,6,rand(16..28)), time:times.sample, accepted: [true, false].sample, party: rand(1..4), user: guests.sample, restaurant: Restaurant.all.sample)
 end
 
-15.times do
-  Booking.create(date: Date.new(2020,5,rand(15..28)), time:'Lunch', accepted: true, party: 3, user: User.second, restaurant: Restaurant.all.sample)
-  Booking.create(date: Date.new(2020,6,rand(10..25)), time:'Dinner', accepted: [true, false].sample, party: 3, user: User.second, restaurant: Restaurant.all.sample)
-  Booking.create(date: Date.new(2020,6,rand(10..25)), time:'Lunch', accepted: [true, false].sample, party: 3, user: User.second, restaurant: Restaurant.all.sample)
-end
+# 15.times do
+#   Booking.create(date: Date.new(2020,5,rand(15..28)), time:'Lunch', accepted: true, party: 3, user: guests.sample, restaurant: Restaurant.all.sample)
+#   Booking.create(date: Date.new(2020,6,rand(10..25)), time:'Dinner', accepted: [true, false].sample, party: 3, user: guests.sample, restaurant: Restaurant.all.sample)
+#   Booking.create(date: Date.new(2020,6,rand(10..25)), time:'Lunch', accepted: [true, false].sample, party: 3, user: guests.sample, restaurant: Restaurant.all.sample)
+# end
 
 Booking.all.each do |booking|
   if booking.date < Date.today
     user = booking.user
     bool = [true, false].sample
+    positive = ["Really cool booking, thanks for being so fun","What a helpful group, they were very patient when we had some problems in the kitchen", "Samantha arrived 10 minutes early and seemed to enjoy her meal, would love to have her back with her friends", "Cool booking!","Samantha was a fantastic booking, she was friendly, kind and fun!" , "We will definitely have Samantha back" , "We had so much fun serving Samantha, highly recommend her as a guest", "On time, fun and cool!","What a friendly bunch of people, i wish every booking was like this","This was a great booking, the group were so friendly and fun." , "What an amazing bunch! They were on time, polite and a delight to have in the restaurant", "WOW! what a good booking!", "Samantha was so cool and friendly, we will welcome her back into the restaurant with open arms!", "We cannot wait to have Samantha back in the restaurant! Her friends were also very nice"]
+    negative = ["George was not particularly friendly to our staff","AVOID, late and rude!","George and his pals overstayed their welcome, and left the place in a mess","Not a good booking, dont recommend","George was rude and unkind to our staff","Turned up 20 minutes late with no apology wont be accepting again","George and his friend Git were a bit drunk and loud","George was a bit of a dissapointing booking!", "Not the best booking, George was late and a bit rude" , "George came along with his pals Arthur, Lucien, Alex and Ben... cor they were a bit roudy and kept us open until the early hours argueing about one of their other friends Heroku" , "Another visit from George, we really need to stop accepting his bookings" , "George was pleasent enough but turned up late"]
     if bool
-      Review.create!(punctuality_rating: rand(6..10)/2.0, booking_rating: rand(6..10)/2.0, content: Faker::Marketing.buzzwords, user:user, booking:booking)
+      if booking.user == p_guest
+        Review.create!(punctuality_rating: rand(7..10)/2.0, booking_rating: rand(7..10)/2.0, content: positive.sample, user: booking.user, booking:booking)
+      else
+        Review.create!(punctuality_rating: rand(1..5)/2.0, booking_rating: rand(1..5)/2.0, content: negative.sample, user: booking.user, booking:booking)
+      end
     end
   end
 end
