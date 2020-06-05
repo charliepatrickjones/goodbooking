@@ -83,10 +83,11 @@ url16 = 'https://media.timeout.com/images/103720736/image.jpg'
 
 times = ["Lunch", "Dinner", "Happy Hour"]
 
-40.times do
+30.times do
+  Booking.create(date: Date.new(2020,5,rand(20..30)), time:times.sample, accepted: true, party: rand(1..8), user: guests.sample, restaurant: Restaurant.all.sample)
   Booking.create(date: Date.new(2020,6,rand(1..4)), time:times.sample, accepted: true, party: rand(1..4), user: guests.sample, restaurant: Restaurant.all.sample)
-  Booking.create(date: Date.new(2020,6,rand(6..15)), time:times.sample, accepted: [true, false].sample, party: rand(1..4), user: guests.sample, restaurant: Restaurant.all.sample)
-  Booking.create(date: Date.new(2020,6,rand(16..28)), time:times.sample, accepted: [true, false].sample, party: rand(1..4), user: guests.sample, restaurant: Restaurant.all.sample)
+  Booking.create(date: Date.new(2020,6,rand(6..15)), time:times.sample, accepted: [true, false].sample, party: rand(1..8), user: guests.sample, restaurant: Restaurant.all.sample)
+  Booking.create(date: Date.new(2020,6,rand(16..28)), time:times.sample, accepted: [true, false].sample, party: rand(1..8), user: guests.sample, restaurant: Restaurant.all.sample)
 end
 
 # 15.times do
